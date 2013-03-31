@@ -1,0 +1,66 @@
+﻿/* [Common]------------------------------ */
+html, body {
+    margin: 0px;
+    padding: 0px;
+}
+
+html {
+    height: 100%;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+body {
+    text-align: center;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    font-family: Comic Sans MS, Arial;
+    font-size: 13px;
+    background: white;
+}
+
+iframe {
+    border: 0px;
+}
+
+#Root {
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    background: black;
+    display: none;
+    opacity: 0;
+}
+
+#ExitButton {
+    position: absolute;
+    left: 10px;
+    cursor: pointer;
+    top: 10px;
+    background: url('/images/back-button-white.png') no-repeat;
+    background-size: 27px;
+    background-position: 6px 6px;
+    height: 45px;
+    opacity: 0.5;
+    padding-left: 39px;
+    padding-top: 6px;
+    font-size: 17px;
+    color: white;
+    text-align: left;
+    color: transparent;
+}
+
+#ExitButton:hover {
+    opacity: 1;
+    color: white;
+}
+
+#audios {
+    display: none;
+}

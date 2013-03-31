@@ -1,0 +1,140 @@
+﻿#SmilesBox {
+    position: relative;
+    margin: 5px;
+    float: left;
+}
+
+#SmilesBox .smiles_container,
+#SmilesBox .vip_smiles_container {
+    margin: 5px;
+    float: left;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+
+#SmilesBox .vip_smiles_container .disabled {
+}
+
+#SmilesBox .more,
+#SmilesBox .less {
+    float: right;
+    color: gray;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+#SmilesBox .more:hover,
+#SmilesBox .less:hover {
+    color: blue;
+    text-decoration: underline;
+}
+
+#SmilesBox .vip_smiles {
+    display: none;
+}
+
+#SmilesBox .item {
+    float: left;
+    padding: 5px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+#SmilesBox .item:hover {
+    border: 1px solid silver;
+    border-radius: 5px;
+    background: white;
+}
+
+#SmilesBox .vip_smiles_container.disabled .item {
+    cursor: default;
+}
+
+#SmilesBox .vip_smiles_container.disabled .item span {
+    background-image: url('/images/emotions_disabled.png');
+}
+
+#SmilesBox .vip_smiles_container.disabled .item:hover {
+    border: 1px solid transparent;
+    border-radius: 0px;
+    background: transparent;
+}
+
+
+
+
+#ChatBox {
+    margin: 5px;
+    position: absolute;
+    bottom: 0px;
+    top: 230px;
+    left: 0px;
+    right: 0px;
+    min-height: 70px;
+}
+
+#ChatBox .container {
+    position: absolute;
+    top: 10px;
+    bottom: 24px;
+    left: 5px;
+    right: 5px;
+    border-bottom: 1px solid #E7E7E7;
+    color: black;
+    font-size: 12px;
+    overflow: auto;
+    padding-top: 8px;
+}
+
+#ChatBox input.user_text {
+    background: white;
+    position: absolute;
+    border: 0px solid silver;
+    bottom: -3px;
+    left: 0px;
+    right: 0px;
+    height: 25px;
+    padding-left: 5px;
+    padding-right: 5px;
+    outline: none;
+    font-size: 12px;
+    width: 210px;
+}
+
+#ChatBox input.user_text.disabled {
+    color: #967B7B;
+}
+
+
+#ChatBox .container .chat_item {
+    padding-left: 5px;
+    text-align: left;
+    padding-bottom: 3px;
+}
+
+#ChatBox .container .reverse {
+    text-align: right;
+    margin-right: 12px;
+    color: gray!important;
+}
+
+#ChatBox .container .reverse2 {
+    text-align: right;
+    margin-right: 5px;
+}
+
+#ChatBox .container .chat_item.text {
+    padding-left: 12px;
+}
+
+#ChatBox .container .chat_item span {
+    color: rgba(72, 158, 20, 1);
+}
+
+#ChatBox .container .chat_item span.me {
+    color: silver;
+}

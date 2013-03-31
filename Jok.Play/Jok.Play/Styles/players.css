@@ -1,0 +1,311 @@
+﻿/* Players */
+#Info {
+    width: 840px;
+    height: 140px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+    z-index: 1;
+}
+
+#Player1 {
+    float: left;
+    min-height: 130px;
+    width: 120px;
+    position: relative;
+    display: none;
+}
+
+#Player2 {
+    float: right;
+    min-height: 130px;
+    width: 120px;
+    position: relative;
+    display: none;
+}
+
+#Player1 .avatar, #Player2 .avatar {
+    width: 90px;
+    max-height: 130px;
+}
+
+#Player1 .nick, #Player2 .nick {
+    color: White;
+}
+
+#Player1 .wins, #Player2 .wins {
+    color: rgba(255, 255, 255, 0.66);
+    font-weight: bold;
+    font-size: 28px;
+    position: absolute;
+    top: 90px;
+}
+
+#Player1 .added_points {
+    position: absolute;
+    top: 50px;
+    color: #FFCA91;
+    left: 120px;
+    width: 120px;
+    text-align: left;
+    display: none;
+}
+
+#Player1 .wins {
+    left: -3px;
+}
+
+#Player2 .wins {
+    right: -3px;
+}
+
+#Player1 .score {
+    position: absolute;
+    left: 110px;
+    top: 78px;
+    font-weight: bold;
+    font-size: 20px;
+    color: #DC974C;
+    width: 120px;
+    text-align: left;
+}
+
+#Player2 .score {
+    position: absolute;
+    right: 110px;
+    top: 78px;
+    font-weight: bold;
+    font-size: 20px;
+    color: #DC974C;
+    width: 120px;
+    text-align: right;
+}
+
+#Player1 .score img,
+#Player2 .score img {
+    width: 25px;
+    padding-right: 3px;
+    padding-bottom: 3px;
+}
+
+#Player1 .progresbar, #Player2 .progresbar {
+    width: 0px;
+    height: 2px;
+    position: absolute;
+    bottom: -12px;
+    left: 25px;
+    text-align: left;
+    background: lime;
+}
+
+.player .chat_bubble {
+    position: absolute;
+    left: 100px;
+    top: 0px;
+    background: url('/images/bubble.png') center center no-repeat;
+    height: 54px;
+    width: 106px;
+    padding: 5px;
+    padding-bottom: 20px;
+    display: none;
+}
+
+.player .chat_bubble.invert {
+    right: 100px;
+    background: url('/images/bubble2.png') center center no-repeat;
+    left: auto;
+}
+
+.player .chat_bubble div.msg {
+    display: table-cell;
+    vertical-align: middle;
+    width: 110px;
+    height: 52px;
+    text-align: center;
+}
+
+#Player2 .buzz {
+    position: absolute;
+    top: 55px;
+    font-size: 13px;
+    cursor: pointer;
+    width: 40px;
+    height: 14px;
+    right: -58px;
+    font-family: Times New Roman;
+    display: none;
+}
+
+#Player1 .ready, #Player2 .ready {
+    position: absolute;
+    top: 50px;
+    left: 70px;
+    display: none;
+}
+
+
+#Player1 .music_player {
+    position: absolute;
+    background: rgb(116, 116, 116);
+    border-radius: 5px;
+    box-shadow: inset 0 0 3px black;
+    left: 0px;
+    bottom: 0px;
+    z-index: 5;
+    color: white;
+    left: 50%;
+    margin-left: -69px;
+    display: none;
+}
+
+#Player1 .music_speakers {
+    position: absolute;
+    top: -42px;
+    left: 50%;
+    margin-left: -56px;
+    z-index: -1;
+    display: none;
+    width: 110px;
+}
+
+#Player1:hover .music_player {
+    display: block;
+}
+
+#Player1 .music_player .jokfm_plugin_volume {
+    display: none!important;
+}
+
+#Player1 .music_player .jokfm_plugin {
+    width: 123px!important;
+    height: 45px!important;
+}
+
+#Player1 .music_player .jokfm_plugin .active_channel {
+    position: absolute;
+    bottom: 5px;
+    right: 0px;
+    left: 0px;
+    padding-left: 5px;
+}
+
+
+
+.player .details {
+    position: absolute;
+    right: 0px;
+    width: 260px;
+    background: white;
+    display: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px black;
+    margin-top: -10px;
+    top: 0px;
+}
+
+.player .details .info {
+    width: 120px;
+    float: right;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+.player .details .actions {
+    padding: 5px;
+    padding-top: 10px;
+}
+
+.player .details .actions button {
+    width: 247px;
+}
+
+.player .details .stats {
+    margin-right: 120px;
+}
+
+.player .details .avatar {
+    width: 90px;
+    max-height: 130px;
+}
+
+.player .details .nick {
+    color: #55B919!important;
+    margin-bottom: 10px;
+}
+
+.player .details .stats-menu {
+    font-size: 16px;
+    border-right: 1px solid rgba(238, 238, 238, 1);
+    padding-left: 5px;
+    width: 100%;
+    padding-right: 5px;
+    margin-top: 10px;
+    font-family: Times New Roman;
+    color: black;
+}
+
+.player .details .stats-menu td.description {
+    text-align: left;
+    padding: 5px;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(238, 238, 238, 1);
+    vertical-align: bottom;
+}
+
+.player .details .stats-menu td.value {
+    text-align: center;
+    font-weight: bold;
+    padding: 5px;
+    border-bottom: 1px solid rgba(238, 238, 238, 1);
+    text-shadow: 0px 0px 1px silver;
+    min-width: 30px;
+}
+
+.player .details .stats-menu td.vip-expiration {
+    color: #55B919;
+    text-shadow: 0px 0px 1px silver;
+    text-align: center;
+    font-size: 14px;
+    padding-top: 10px;
+    padding-bottom: 3px;
+}
+
+.player .details .friend_status {
+    color: silver;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+
+.player .rate {
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 0 10px black;
+    padding: 10px;
+    position: absolute;
+    margin-top: 10px;
+    right: 0px;
+    color: gray;
+    font-family: Arial;
+    min-width: 120px;
+    display: none;
+}
+
+.player .rate span {
+}
+
+.player .rate div {
+    margin-top: 7px;
+}
+
+.player .rate div button {
+    width: 110px;
+}
+
+.player .rate .step2 {
+    display: none;
+    cursor: default;
+}

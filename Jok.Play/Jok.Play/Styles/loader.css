@@ -1,0 +1,17 @@
+﻿/* [Loader]------------------------------ */
+#Loader {
+    background: url('/Images/joklogo_transparent.png') top left no-repeat;
+    text-align: center;
+    color: silver;
+    top: 50%;
+    margin-top: -75px;
+    position: absolute;
+    width: 100px;
+    left: 50%;
+    font-weight: bold;
+    padding-top: 90px;
+    padding-left: 6px;
+    margin-left: -50px;
+}
+
+
