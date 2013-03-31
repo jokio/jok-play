@@ -32,11 +32,7 @@ How to use:
 </head>
 <body>
     <div id="Game">
-        <div id="table">
-            <canvas id="table_canvas" width="832px" height="424px"></canvas>
-        </div>
-        <canvas id="cue_canvas"></canvas>
-        <div id="chalk"></div>
+        ...Awesome game stuff here...
     </div>
     <script src="http://play.jok.io/js"></script>
 </body>
