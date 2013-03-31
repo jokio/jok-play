@@ -57,7 +57,7 @@
 
 
 #RightDoc {
-    position: absolute;
+    position: fixed;
     width: 230px;
     top: 0px;
     bottom: 0px;

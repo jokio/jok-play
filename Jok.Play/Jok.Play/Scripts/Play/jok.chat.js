@@ -92,7 +92,7 @@ jok.chat = {
         if (!chatAllowed) {
             $('#ChatBox input.user_text').attr('class', 'user_text disabled');
             $('#ChatBox input.user_text').attr('readonly', 'readonly');
-            $('#ChatBox input.user_text').val(jok.config.chatLimitationText);
+            $('#ChatBox input.user_text').val(jok.texts.A027);
         }
         else {
             $('#ChatBox input.user_text').attr('class', 'user_text');
@@ -156,7 +156,7 @@ jok.chat = {
         if (userid == jok.currentUserID) return;
 
         // როდესაც მეგობრობის შემოთავაზება მოვა ოპონენტისგან
-        if (msg == jok.config.sendFriendRequestText) {
+        if (msg == jok.texts.A026) {
             this.sendInternal(jok.config.checkFriendText);
 
             jok.setPlayer(2, userid);

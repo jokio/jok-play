@@ -10,24 +10,22 @@ var game = game || {};
 
     var defaultConfig = {
         gameid: 0,
+        channel: '',
+        language: 'en_US',
         apiUrl: 'http://api.jok.ge/',
         pusherUrl: 'http://pusher.jok.io:80',
         smilesLocation: 'http://jok.ge/content/images/skype/',
-        channel: '',
         pluginUrl: 'http://play.jok.io',
         exitUrl: 'http://jok.ge',
         playUrl: window.location,
         authorizationUrl: 'http://jok.ge/joinus?returnUrl=' + window.location,
         isMobileDevice: isMobileDevice,
-        sendFriendRequestText: 'Let\'s be friends...',
-        chatLimitationText: 'Only Smiles',
         checkFriendText: '[cmd:CheckFriendsStatus]',
         buzzText: '[cmd:Buzz]',
         audios: '/audios'
     }
 
     for (prop in defaultConfig) {
-        console.log(prop);
         jok.config[prop] = jok.config[prop] || defaultConfig[prop];
     }
 
@@ -67,6 +65,7 @@ jok.init = function () {
 
     if ($.cookie('sidebar_open2') == '1') {
         $('#RightDoc').css('display', 'block');
+        $('#RightDoc').css('right', '0px');
         $('#Root').css('right', '230px');
         $('body').css('margin-right', '230px');
     }
@@ -130,7 +129,7 @@ jok.init = function () {
 
         jok.api.sendFriendRequest(opponentUserID);
 
-        jok.chat.send(jok.config.sendFriendRequestText);
+        jok.chat.send(jok.texts.A026);
     });
 
     // addins
@@ -275,18 +274,22 @@ jok.rateUser = function (position, userid, rate) {
 
 
 jok.openDockRight = function () {
-    $('#RightDoc').css('display', 'block');
     $('#Root').animate({ right: 230 }, 'fast');
     $('body').animate({ marginRight: 230 }, 'fast');
+
+    $('#RightDoc').css('display', 'block');
+    $('#RightDoc').animate({ right: 0 }, 'fast');
 
     $.cookie('sidebar_open2', '1', { expires: 300, path: '/' });
 }
 
 jok.closeDockRight = function () {
-    $('#Root').animate({ right: 0 }, 'normal', function () {
+    $('#Root').animate({ right: 0 }, 'normal');
+    $('body').animate({ marginRight: 0 }, 'normal');
+
+    $('#RightDoc').animate({ right: -230 }, 'normal', function () {
         $('#RightDoc').css('display', 'none');
     });
-    $('body').animate({ marginRight: 0 }, 'normal');
 
     $.cookie('sidebar_open2', '0', { expires: 300, path: '/' });
     $.removeCookie('sidebar_open2');
