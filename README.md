@@ -18,7 +18,7 @@ How to use:
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Billiard</title>
+    <title>Awesome Game</title>
     <link href="http://play.jok.io/css" rel="stylesheet" />
     <script>
         var jok = {};
