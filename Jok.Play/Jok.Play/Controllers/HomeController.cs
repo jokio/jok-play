@@ -18,8 +18,11 @@ namespace Jok.Play.Controllers
                 Version = version,
                 Description = "Plugin for Realtime multiplayer games.",
                 Repo = "https://github.com/playerx/jok-play",
-                LatestJS = Request.Url.AbsoluteUri + "scripts/v" + version + ".js",
-                LatestCSS = Request.Url.AbsoluteUri + "styles/v" + version + ".css"
+                Latest = new
+                {
+                    js = Request.Url.AbsoluteUri + "js",
+                    css = Request.Url.AbsoluteUri + "css"
+                }
             }, JsonRequestBehavior.AllowGet);
         }
     }
