@@ -13,3 +13,32 @@ Features:
 --------
 
 How to use:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Billiard</title>
+    <link href="http://play.jok.io/css" rel="stylesheet" />
+    <script>
+        var jok = {};
+
+        jok.config = {
+            channel: '',
+            language: 'en_US',
+            exitUrl: 'http://somewhere_to_exit.com'
+        }
+    </script>
+</head>
+<body>
+    <div id="Game">
+        <div id="table">
+            <canvas id="table_canvas" width="832px" height="424px"></canvas>
+        </div>
+        <canvas id="cue_canvas"></canvas>
+        <div id="chalk"></div>
+    </div>
+    <script src="http://play.jok.io/js"></script>
+</body>
+</html>
+```
