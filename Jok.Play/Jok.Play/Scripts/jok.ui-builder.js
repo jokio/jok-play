@@ -37,6 +37,7 @@
     var player2 = player.clone(false);
     player2.attr('id', 'Player2');
     player2.append(playerDetails);
+    player2.find('.chat_bubble').attr('class', 'chat_bubble invert');
 
     var notifications = $('<div id="Notification"></div>');
     notifications.append('<div class="item connecting">' + texts.A008 + '<br /><br /><img src="' + jok.config.pluginUrl + '/images/loading_black.gif" alt="connecting" /></div>');
