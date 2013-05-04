@@ -1,6 +1,7 @@
 ﻿var jok = jok || {};
 var game = game || {};
 
+
 (function () {
 
     var userAgent = navigator.userAgent.toLowerCase();
@@ -103,22 +104,6 @@ jok.init = function () {
     });
 
 
-    $(document).on('hover', '.player .avatar', function () {
-        var details = $(this).parent().find('.details');
-        if (details.length == 0) return;
-
-        details.css('display', 'block');
-        details.css('opacity', '0');
-        details.fadeTo('fast', 1);
-    });
-
-    $(document).on('mouseleave', '.player .details', function () {
-        var _this = $(this);
-        _this.fadeTo('fast', 0, function () {
-            _this.hide();
-        });
-    });
-
 
     $(document).on(clickEvent, '.sendFriendRequestButton', function () {
 
@@ -169,6 +154,14 @@ jok.init = function () {
 
 
     jok.chat.init();
+}
+
+jok.getCookieDomain = function () {
+    var firstIndex = window.location.host.indexOf('.');
+    var lastIndex = window.location.host.lastIndexOf('.');
+    var host = window.location.host;
+
+    return (firstIndex != lastIndex) ? host.substring(firstIndex) : (lastIndex > -1 ? '.' + host : host);
 }
 
 jok.buzz = function () {

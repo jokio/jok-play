@@ -42,6 +42,10 @@
     top: 90px;
 }
 
+.player .added_points {
+    display: none;
+}
+
 #Player1 .added_points {
     position: absolute;
     top: 50px;
@@ -202,6 +206,10 @@
     box-shadow: 0 0 10px black;
     margin-top: -10px;
     top: 0px;
+}
+
+.player:hover .details {
+    display: block;
 }
 
 .player .details .info {

@@ -31,6 +31,7 @@ namespace Jok.Play
 
             bundles.Add(new StyleBundle("~/css").Include(
                         "~/styles/common.css",
+                        "~/styles/buttons.css",
                         "~/styles/loader.css",
                         "~/styles/players.css",
                         "~/styles/notifications.css",

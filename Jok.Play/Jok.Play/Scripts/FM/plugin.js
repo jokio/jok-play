@@ -20,7 +20,7 @@ var RadioPlugin = function (titleObj, playButton, stopButton, volumeLogo, volume
         var newVolume = this._volumeSlider.slider("option", "value");
         this.volumeChange(newVolume);
 
-        $.cookie('volume', newVolume, { expires: 300, path: '/' });
+        $.cookie('volume', newVolume, { expires: 300, path: '/', domain: jok.getCookieDomain() });
     }
 
     volumeSlider.slider({
@@ -103,9 +103,9 @@ RadioPlugin.prototype.play = function (_id) {
     }
     catch (err) { }
 
-    $.cookie('isMusicPlaying', '1', { expires: date, path: '/' });
-    $.cookie('channel', item.channel, { expires: 300, path: '/' });
-    $.cookie('isActiveListener', '1', { expires: date2, path: '/' });
+    $.cookie('isMusicPlaying', '1', { expires: date, path: '/', domain: jok.getCookieDomain() });
+    $.cookie('channel', item.channel, { expires: 300, path: '/', domain: jok.getCookieDomain() });
+    $.cookie('isActiveListener', '1', { expires: date2, path: '/', domain: jok.getCookieDomain() });
 
     return true;
 }
@@ -127,8 +127,8 @@ RadioPlugin.prototype.stop = function () {
     $('#normal_list div.item').attr('class', 'item');
 
     // cookies stuff
-    $.cookie('isMusicPlaying', '0', { expires: new Date(), path: '/' });
-    $.removeCookie('isMusicPlaying');
+    $.cookie('isMusicPlaying', '0', { expires: new Date(), path: '/', domain: jok.getCookieDomain() });
+    $.removeCookie('isMusicPlaying', { path: '/', domain: jok.getCookieDomain() });
 }
 
 RadioPlugin.prototype.playNext = function () {

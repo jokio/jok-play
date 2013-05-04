@@ -279,6 +279,7 @@
     <Content Include="Styles\Addins\chat.css" />
     <Content Include="Styles\Addins\emotions.css" />
     <Content Include="Styles\Addins\fullscreen.css" />
+    <Content Include="Styles\buttons.css" />
     <Content Include="Styles\common.css" />
     <Content Include="Styles\fm.css" />
     <Content Include="Styles\game.css" />
