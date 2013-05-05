@@ -163,7 +163,7 @@
     display: none;
 }
 
-#Player1 .music_speakers {
+.player .music_speakers {
     position: absolute;
     top: -42px;
     left: 50%;
@@ -317,3 +317,4 @@
     display: none;
     cursor: default;
 }
+

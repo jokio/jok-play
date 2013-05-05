@@ -19,6 +19,7 @@
     playerDetails.append('<div class="stats"> <table cellpadding="0px" cellspacing="0px" class="stats-menu"> <tr class="vip"> <td class="description">' + texts.A001 + ': </td> <td style="color: Red;" class="value">VIP </td> </tr> <tr class="points"> <td class="description">' + texts.A002 + ': </td> <td style="color: orange;" class="value">0 </td> </tr> <tr class="fans"> <td class="description">' + texts.A003 + ': </td> <td style="color: #2AAA00;" class="value">0 </td> </tr> <tr class="friends"> <td class="description">' + texts.A004 + ': </td> <td style="color: #AC0909;" class="value">0 </td> </tr> </table> </div> <div class="actions"> <div class="friend_status"></div> <button class="button green sendFriendRequestButton">' + texts.A005 + '</button> </div> </div>');
 
     var player = $('<div class="player"></div>');
+    player.append('<img src="' + jok.config.pluginUrl + '/images/speakers' + (jok.config.isVIPMember ? '2' : '') + '.png" class="music_speakers" />');
     player.append('<img class="avatar" src="" alt="" />');
     player.append('<div class="nick"></div>');
     player.append('<div class="progresbar"></div>');

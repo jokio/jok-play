@@ -22,6 +22,7 @@ var game = game || {};
         authorizationUrl: 'http://jok.ge/joinus?returnUrl=' + window.location,
         isMobileDevice: isMobileDevice,
         checkFriendText: '[cmd:CheckFriendsStatus]',
+        isVIPMember: false,
         buzzText: '[cmd:Buzz]',
         audios: '/audios'
     }

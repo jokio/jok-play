@@ -243,6 +243,8 @@
     <Content Include="Images\loading_green.gif" />
     <Content Include="Images\material1.png" />
     <Content Include="Images\ready.png" />
+    <Content Include="Images\speakers.png" />
+    <Content Include="Images\speakers2.png" />
     <Content Include="Images\vignette.png" />
     <Content Include="Images\wood.jpg" />
     <Content Include="Scripts\createjs.preloadjs-0.2.0.js" />

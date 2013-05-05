@@ -98,7 +98,7 @@ RadioPlugin.prototype.play = function (_id) {
 
         }
 
-        $('.music_speakers').show();
+        $('#Player1 .music_speakers').show();
         $('.stop_music_button').show();
     }
     catch (err) { }
@@ -120,7 +120,7 @@ RadioPlugin.prototype.stop = function () {
 
     $('#favorites_list ._play.playing').attr('class', '_play');
     $('#normal_list ._play.playing').attr('class', '_play');
-    $('.music_speakers').hide();
+    $('#Player1 .music_speakers').hide();
     $('.stop_music_button').hide();
 
     $('#favorites_list div.item').attr('class', 'item');

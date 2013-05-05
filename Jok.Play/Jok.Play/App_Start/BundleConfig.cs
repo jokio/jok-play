@@ -42,7 +42,6 @@ namespace Jok.Play
                         "~/styles/rightDoc.css",
                         "~/styles/game.css",
                         "~/styles/fm.css"
-                        //"http://jok.ge/styles/jok.buttons.css"
             ));
 
 
