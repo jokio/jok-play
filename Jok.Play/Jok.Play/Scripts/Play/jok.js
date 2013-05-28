@@ -33,7 +33,7 @@ var game = game || {};
 
 })();
 
-var clickEvent = jok.config.isMobileDevice ? 'tap' : 'click';
+var clickEvent = jok.config.isMobileDevice ? 'touchstart' : 'click';
 
 jok.players = {};
 
@@ -72,11 +72,11 @@ jok.init = function () {
         $('body').css('margin-right', '230px');
     }
 
-    $('#RightDocOpener').on(clickEvent, function () {
+    $(document).on(clickEvent, '#RightDocOpener', function () {
         jok.openDockRight();
     });
 
-    $('#RightDocClose').on(clickEvent, function () {
+    $(document).on(clickEvent, '#RightDocClose', function () {
         jok.closeDockRight();
     });
 
@@ -96,11 +96,11 @@ jok.init = function () {
 
 
 
-    $('#ExitButton').on(clickEvent, function () {
+    $(document).on(clickEvent, '#ExitButton', function () {
         window.location.assign(jok.config.exitUrl);
     });
 
-    $('#Root').bind('touchmove', function (e) {
+    $(document).bind('touchmove', '#Root', function (e) {
         e.preventDefault();
     });
 
@@ -119,15 +119,15 @@ jok.init = function () {
     });
 
     // addins
-    $('#FullScreen').on(clickEvent, toggleFullScreen);
-    $('#Addins > .item.full_screen').on(clickEvent, toggleFullScreen);
+    $(document).on(clickEvent, '#FullScreen', toggleFullScreen);
+    $(document).on(clickEvent, '#Addins > .item.full_screen', toggleFullScreen);
 
-    $('#Addins > .item > .bg').on(clickEvent, function () {
+    $(document).on(clickEvent, '#Addins > .item > .bg', function () {
         $('#Addins > .item > #SmilesBox').toggle();
     });
 
 
-    $('.player .buzz').on(clickEvent, function () {
+    $(document).on(clickEvent, '.player .buzz', function () {
         jok.buzz();
 
         var _this = $(this);
@@ -142,7 +142,7 @@ jok.init = function () {
         jok.chat.send('BUZZ!');
     });
 
-    $('#Notification .item.share_friends input').on(clickEvent, function () {
+    $(document).on(clickEvent, '#Notification .item.share_friends input', function () {
         $(this).select();
     });
 

@@ -103,6 +103,7 @@ RadioPlugin.prototype.play = function (_id) {
     }
     catch (err) { }
 
+    $.removeCookie('channel');
     $.cookie('isMusicPlaying', '1', { expires: date, path: '/', domain: jok.getCookieDomain() });
     $.cookie('channel', item.channel, { expires: 300, path: '/', domain: jok.getCookieDomain() });
     $.cookie('isActiveListener', '1', { expires: date2, path: '/', domain: jok.getCookieDomain() });

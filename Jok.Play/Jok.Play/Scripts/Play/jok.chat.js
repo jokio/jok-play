@@ -30,13 +30,13 @@ jok.chat = {
             $(number <= 24 ? '#SmilesBox .smiles_container' : '#SmilesBox .vip_smiles_container').append(['<div class="item" data-name="', name, '" title="(', name, ')"><span class="emotion ', name, '" /></div>'].join(''));
         }
 
-        $('#SmilesBox div.more').on(clickEvent, function () {
+        $(document).on(clickEvent, '#SmilesBox div.more', function () {
             $(this).hide();
             $('#SmilesBox div.vip_smiles').css('display', 'block');
             $('#SmilesBox div.vip_smiles').fadeTo(0, 1);
             $('#ChatBox').css('top', '590px');
         });
-        $('#SmilesBox div.less').on(clickEvent, function () {
+        $(document).on(clickEvent, '#SmilesBox div.less', function () {
             $('#SmilesBox div.vip_smiles').fadeTo(0, 0, function () {
                 $('#SmilesBox div.vip_smiles').hide();
                 $('#SmilesBox div.more').show();
@@ -45,7 +45,7 @@ jok.chat = {
         });
 
 
-        $('#SmilesBox div.item').on(clickEvent, function () {
+        $(document).on(clickEvent, '#SmilesBox div.item', function () {
             var text = $(this).attr('data-name');
             if (!text || text == '') return;
 
@@ -67,7 +67,7 @@ jok.chat = {
             }
         });
 
-        $('#ChatBox input.user_text').keydown(function (e) {
+        $(document).on('keydown', '#ChatBox input.user_text', function (e) {
             if (e.which != 13/*Enter*/) return;
 
             if (!jok.chat.isAllowed) return;
