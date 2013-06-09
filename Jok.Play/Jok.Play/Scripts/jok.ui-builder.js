@@ -48,6 +48,7 @@
     notifications.append('<div class="item quit">' + texts.A012 + '<br /><span>MESSAGE GOES HERE</span><br /><button class="button brown new_game">' + texts.A013 + '</button></div>');
     notifications.append('<div class="item table_leave_winner"><span style="font-size: 13px">' + texts.A014 + '</span><br /><br /><button class="button brown new_game">' + texts.A015 + '</button></div>');
     notifications.append('<div class="item table_finish_winner">' + texts.A016 + ' <span>WINNER NAME GOES HERE</span><br /><br /><button class="button brown play_again">' + texts.A017 + '</button></div>');
+    notifications.append('<div class="item tournament_game_limit">' + texts.A028 + '<br /><br /><button class="button brown new_game">' + texts.A029 + '</button></div>');
 
     var rightDocOpener = $('<div id="RightDocOpener"><span>' + texts.A018 + '</span></div>');
 
