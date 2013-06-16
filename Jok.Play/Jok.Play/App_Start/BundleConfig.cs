@@ -9,7 +9,7 @@ namespace Jok.Play
         public static void RegisterBundles(BundleCollection bundles)
         {
             // Play
-            bundles.Add(new ScriptBundle("~/js").Include(
+            bundles.Add(new ScriptBundle("~/bundles/js").Include(
                         "~/scripts/jquery-{version}.js",
                         "~/scripts/jquery.cookie.js",
                         "~/scripts/jquery-ui-{version}.js",
@@ -29,7 +29,7 @@ namespace Jok.Play
                         "~/scripts/play/loader.js"
             ));
 
-            bundles.Add(new StyleBundle("~/css").Include(
+            bundles.Add(new StyleBundle("~/bundles/css").Include(
                         "~/styles/common.css",
                         "~/styles/buttons.css",
                         "~/styles/loader.css",
