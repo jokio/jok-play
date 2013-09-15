@@ -101,7 +101,7 @@ jok.init = function () {
     });
 
     $(document).bind('touchmove', '#Root', function (e) {
-        e.preventDefault();
+        //e.preventDefault();
     });
 
 
