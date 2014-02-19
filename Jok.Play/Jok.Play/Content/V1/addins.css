@@ -1,0 +1,40 @@
+﻿
+#Addins {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 30px;
+}
+
+#Addins .item {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    opacity: .4;
+    margin-top: 7px;
+    transition: .5s;
+    -moz-transition: .5s; /* Firefox 4 */
+    -webkit-transition: .5s; /* Safari and Chrome */
+    -o-transition: .5s; /* Opera */
+}
+
+#Addins .item.active {
+    opacity: .9;
+}
+
+#Addins .item:hover {
+    opacity: 1;
+}
+
+#Addins .item img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#Addins .item .bg {
+    background: white;
+    border: 1px solid white;
+    border-radius: 5px 5px 5px 0;
+    height: 17px;
+    padding: 5px;
+}

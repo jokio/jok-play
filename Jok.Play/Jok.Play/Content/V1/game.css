@@ -1,0 +1,22 @@
+﻿#BackgroundMaterial,
+#Background {
+    background: green;
+    opacity: 0.6;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+#BackgroundMaterial {
+    background: url('/images/bg.png') repeat;
+}
+
+#Game {
+    margin-top: 155px;
+    width: 840px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
