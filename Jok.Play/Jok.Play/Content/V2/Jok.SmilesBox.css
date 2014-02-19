@@ -1,0 +1,93 @@
+﻿#SmilesBox {
+    position: fixed;
+    margin: 5px;
+    top: 50%;
+    border-radius: 5px;
+    border: 1px solid #C0C0C0;
+    left: 50%;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.7);
+    background: #F8E3BE url('/Images/chat_bg.png');
+    display: none;
+    width: 405px;
+    margin-left: -203px;
+    padding-top: 10px;
+    margin-top: -130px;
+    z-index: 900;
+}
+
+#SmilesBox .smiles_container,
+#SmilesBox .vip_smiles_container {
+    margin: 5px;
+    float: left;
+    margin-top: 0px;
+    margin-left: 10px;
+}
+
+#SmilesBox .vip_smiles_container .disabled {
+}
+
+#SmilesBox .more,
+#SmilesBox .less {
+    float: right;
+    color: gray;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+#SmilesBox .more:hover,
+#SmilesBox .less:hover {
+    color: blue;
+    text-decoration: underline;
+}
+
+#SmilesBox .vip_smiles {
+    display: none;
+}
+
+#SmilesBox .item {
+    float: left;
+    padding: 5px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+#SmilesBox .item:hover {
+    border: 1px solid silver;
+    border-radius: 5px;
+    background: white;
+}
+
+#SmilesBox .vip_smiles_container.disabled .item {
+    cursor: default;
+}
+
+#SmilesBox .vip_smiles_container.disabled .item span {
+    background-image: url('/images/emotions_disabled.png');
+    opacity: .6;
+}
+
+#SmilesBox .vip_smiles_container.disabled .item:hover {
+    border: 1px solid transparent;
+    border-radius: 0px;
+    background: transparent;
+}
+
+#SmilesBox .headline {
+    margin-bottom: 10px;
+    font-family: Helvetica, Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif;
+}
+
+#SmilesBox .headline.vip {
+    margin-top: 100px;
+    text-align: left;
+    margin-left: 10px;
+    color: #808080;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+#SmilesBox .headline span {
+}

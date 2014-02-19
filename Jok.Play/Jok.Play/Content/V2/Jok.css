@@ -1,0 +1,119 @@
+﻿#Jok {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    min-width: 800px;
+    min-height: 750px;
+    background: rgb(74, 94, 67);
+    font-family: 'Helvetica Neue', Helvetica, Arial;
+    font-size: 14px;
+}
+
+#Background {
+    background: url('/Images/V2/bg.png') repeat;
+    opacity: .5;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+#ExitButton {
+    z-index: 10;
+    position: absolute;
+    left: 10px;
+    cursor: pointer;
+    top: 10px;
+    background: url('/Images/V2/back-button-white.png') no-repeat;
+    background-size: 27px;
+    background-position: 6px 6px;
+    height: 45px;
+    opacity: .5;
+    padding-left: 39px;
+    padding-top: 9px;
+    font-size: 17px;
+    text-align: left;
+    color: rgba(0, 0, 0, 0);
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#ExitButton:hover {
+    opacity: 1;
+    color: #FFF;
+}
+
+
+#RightPanelOpener {
+    z-index: 10;
+    padding-top: 3px;
+    cursor: pointer;
+    font-weight: normal;
+    margin-top: 5px;
+    background-size: 27px;
+    margin-right: 10px;
+    background-position: 100% 0%;
+    font-size: 17px;
+    color: transparent;
+    background-image: url(/Images/V2/details-white.png);
+    background-repeat: no-repeat no-repeat;
+    height: 46px;
+    padding-right: 34px;
+    opacity: 0.5;
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#RightPanelOpener:hover {
+    opacity: 1;
+    color: white;
+}
+
+#SoundEffectsConfig {
+    z-index: 10;
+    padding-top: 3px;
+    cursor: pointer;
+    font-weight: normal;
+    margin-top: 5px;
+    background-size: 27px;
+    margin-right: 10px;
+    background-position: 100% 0%;
+    font-size: 17px;
+    color: transparent;
+    background-image: url(/Images/V2/sound-effects-white.png);
+    background-repeat: no-repeat no-repeat;
+    height: 38px;
+    padding-right: 34px;
+    opacity: 0.5;
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    right: 5px;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#SoundEffectsConfig.disabled {
+    background-image: url('/Images/V2/sound-effects-disabled-white.png');
+}
+
+#SoundEffectsConfig:hover {
+    opacity: 1;
+    color: #FFF;
+}

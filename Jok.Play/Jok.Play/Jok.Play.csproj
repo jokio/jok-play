@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -22,6 +23,7 @@
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <TypeScriptToolsVersion>0.9</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -136,6 +138,7 @@
     <Content Include="Content\Audios\buzz.mp3" />
     <Content Include="Content\Audios\challenge.mp3" />
     <Content Include="Content\Audios\gamestart.mp3" />
+    <Content Include="Content\font-awesome.css" />
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -198,7 +201,12 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Properties\PublishProfiles\play.jok.io.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Images\back-button-white.png" />
@@ -245,6 +253,12 @@
     <Content Include="Images\ready.png" />
     <Content Include="Images\speakers.png" />
     <Content Include="Images\speakers2.png" />
+    <Content Include="Images\V2\back-button-white.png" />
+    <Content Include="Images\V2\back-button-black.png" />
+    <Content Include="Images\V2\bg.png" />
+    <Content Include="Images\V2\details-white.png" />
+    <Content Include="Images\V2\sound-effects-white.png" />
+    <Content Include="Images\V2\sound-effects-disabled-white.png" />
     <Content Include="Images\vignette.png" />
     <Content Include="Images\wood.jpg" />
     <Content Include="Scripts\createjs.preloadjs-0.2.0.js" />
@@ -276,6 +290,16 @@
     <Content Include="Scripts\Play\jok.js" />
     <Content Include="Scripts\Play\loader.js" />
     <Content Include="Scripts\jok.socket.io.js" />
+    <TypeScriptCompile Include="Scripts\typings\jquery.cookie\jquery.cookie.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="Scripts\V2\JK.Config.ts" />
+    <TypeScriptCompile Include="Scripts\V2\JK.Radio.ts" />
+    <TypeScriptCompile Include="Scripts\V2\JK.UI.ts" />
+    <Content Include="Scripts\V2\Jok.API.js" />
+    <Content Include="Scripts\V2\Jok.Chat.js" />
+    <Content Include="Scripts\V2\Jok.GameEngine.js" />
+    <Content Include="Scripts\V2\Jok.js" />
+    <Content Include="Scripts\V2\Jok.Player.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Styles\addins.css" />
     <Content Include="Styles\Addins\chat.css" />
@@ -293,6 +317,12 @@
     <Content Include="Styles\v1.0.css" />
     <Content Include="Styles\v1.2.css" />
     <Content Include="Styles\v1.css" />
+    <TypeScriptCompile Include="Scripts\V2\JK.ts" />
+    <Content Include="Content\V2\Jok.css" />
+    <Content Include="Content\V2\Jok.Emotions.css" />
+    <Content Include="Content\V2\Jok.MusicPlayer.css" />
+    <Content Include="Content\V2\Jok.Notifications.css" />
+    <Content Include="Content\V2\Jok.SmilesBox.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -304,6 +334,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Releases\" />
@@ -316,6 +347,7 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">

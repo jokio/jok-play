@@ -1,0 +1,43 @@
+﻿#Notifications {
+    top: 50%;
+    position: absolute;
+    width: 300px;
+    margin-top: -40px;
+    margin-left: -150px;
+    left: 50%;
+    z-index: 10;
+    cursor: default;
+}
+
+#Notifications .item {
+    border: 1px solid rgba(255, 255, 255, 0.54902);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-family: Helvetica, Arial;
+    padding: 15px;
+    color: #FFF;
+    background-color: rgba(0, 0, 0, 0.431373);
+    margin-bottom: 5px;
+    display: none;
+}
+
+#Notifications .added_points {
+    color: orange;
+}
+
+#Notifications .added_ratings {
+    color: #11D111;
+    font-family: Tahoma;
+}
+
+#Notifications .added_ratings.fail {
+    color: #EE9E9E;
+}
+
+@media screen and (min-width:1250px) {
+    #Notifications {
+        margin-left: -300px;
+    }
+}

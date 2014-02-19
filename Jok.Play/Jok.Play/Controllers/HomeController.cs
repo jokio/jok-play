@@ -38,5 +38,10 @@ namespace Jok.Play.Controllers
         {
             return Redirect(Request.Url.Scheme + "://" + Request.Url.Host + ":" + Request.Url.Port + Styles.Url("~/bundles/css"));
         }
+
+        public ActionResult Test()
+        {
+            return View();
+        }
     }
 }
