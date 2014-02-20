@@ -25,7 +25,7 @@ How to use:
 
         jok.config = {
             gameid: '0',
-            channel: 'LYIhVZH1k0qgLFARiO99mQ',
+            channel: '',
             language: 'en_US',
             exitUrl: 'http://somewhere_to_exit.com',
         }
