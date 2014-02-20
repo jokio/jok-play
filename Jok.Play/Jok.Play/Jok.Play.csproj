@@ -211,6 +211,7 @@
     <Content Include="Content\V1\game.css" />
     <Content Include="Content\V1\loader.css" />
     <Content Include="Content\V1\notifications.css" />
+    <Content Include="Content\V1\_Defaults.Overrides.css" />
     <Content Include="Content\V1\players.css" />
     <Content Include="Content\V1\rightDoc.css" />
     <Content Include="Content\V1\template.css" />
@@ -353,6 +354,7 @@
     <Content Include="Scripts\Play\loader.js" />
     <Content Include="Scripts\jok.socket.io.js" />
     <Content Include="Scripts\V1\jquery-1.9.1.min.map" />
+    <Content Include="Views\Home\DemoV1.cshtml" />
     <TypeScriptCompile Include="Scripts\typings\jquery.cookie\jquery.cookie.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\V2\JK.Config.ts" />
@@ -426,7 +428,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Test.cshtml" />
+    <Content Include="Views\Home\DemoV2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Releases\" />

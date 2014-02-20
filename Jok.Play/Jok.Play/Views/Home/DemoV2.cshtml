@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    @Styles.Render("~/css/v2")
+    @Scripts.Render("~/js/v2")
+</head>
+<body>
+    <div id="Jok">
+
+        <!-- [Corner Objects] -->
+        <div id="Background"></div>
+        <div id="ExitButton">Exit</div>
+        <div id="RightPanelOpener">
+            Chat
+        </div>
+        <div id="SoundEffectsConfig">
+            Sound Effects
+        </div>
+        <div id="MusicPlayer" class="jokfm_plugin">
+            <div>
+                <span class="item previous_button"><i class="fa fa-backward"></i></span>
+                <span class="item play_button"><i class="fa fa-play"></i></span>
+                <span class="item stop_button"><i class="fa fa-stop"></i></span>
+                <span class="item next_button"><i class="fa fa-forward"></i></span>
+            </div>
+            <div class="active_channel">Online Music</div>
+        </div>
+        <!-- [/Corner Objects] -->
+        @*    <div id="Notifications">
+                <div class="item connecting" style="display: block;">
+                    R.A023
+                </div>
+                <div class="item connected">
+                    R.A024
+                </div>
+                <div class="item not_authorized">
+                    R.A025
+                </div>
+                <div class="item waiting_opponents">
+                    R.A026
+                </div>
+                <div class="item waiting_friends">
+                    Html.Raw(R.A027)<br />
+                    <input type="text" readonly style="padding: 13px; width: 230px;" />
+                </div>
+                <div class="item game_starting_select_positions">
+                    R.A028 <br />
+                    R.A029 <span style="font-size: 20px;">10</span> R.A030
+                </div>
+                <div class="item game_finished">
+                    R.A031<br />
+                    <table id="FinishResults"></table>
+                    <a id="PlayAgain" href="#">
+                        R.A032
+                    </a>
+                </div>
+                <div class="item connection_closed" style="cursor:pointer;" onclick="document.location.reload()">
+                    R.A033<br />
+                    R.A034
+                </div>
+            </div>
+            <div id="RightPanel">
+                <div class="results">
+                    <div class="mini_results">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td></td>
+                                    <td><div></div></td>
+                                    <td><div></div></td>
+                                    <td><div></div></td>
+                                    <td><div></div></td>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <div class="full_results">
+                    </div>
+                </div>
+                <div class="chat_messages">
+                    <div class="container">
+                    </div>
+                </div>
+                <div class="chat_input">
+                    @if (String.IsNullOrEmpty(ViewBag.Channel))
+                    {
+                        <input id="ChatMessageInput" type="text" placeholder="R.A037" readonly maxlength="100" />
+                    }
+                    else
+                    {
+                        <input id="ChatMessageInput" type="text" placeholder="R.A047" maxlength="100" />
+                    }
+                </div>
+            </div>
+            <div id="Stats">
+                <div class="dring">
+                    R.A038
+                    <span>~</span>
+                </div>
+                <div class="dominating">
+                </div>
+            </div>
+            <div id="SmilesBox">
+                <div class="headline">
+                    <span>R.A052</span>
+                </div>
+                <div class="smiles_container">
+                </div>
+                <div class="headline vip">
+                    <span>R.A053</span>
+                </div>
+                <div class="vip_smiles_container @(ViewBag.IsVIPMember == true ? "" : "disabled")">
+                </div>
+            </div>*@
+    </div>
+</body>
+</html>

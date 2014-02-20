@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Awesome Game</title>
+    @Styles.Render("~/css/v1")
+    <script>
+        var jok = {};
+
+        jok.config = {
+            gameid: '5',
+            channel: 'LYIhVZH1k0qgLFARiO99mQ',
+            language: 'en_US',
+            isVIPMember: false,
+            exitUrl: 'http://somewhere_to_exit.com',
+            authorizationUrl: 'http://jok.io/JoinUs?returnUrl=http://pool2.jok.io/play/LYIhVZH1k0qgLFARiO99mQ',
+            isMobileDevice: false,
+        }
+
+    </script>
+</head>
+<body>
+    <div id="Game">
+        ...Awesome game stuff here...
+    </div>
+    @Scripts.Render("~/js/v1")
+</body>
+</html>

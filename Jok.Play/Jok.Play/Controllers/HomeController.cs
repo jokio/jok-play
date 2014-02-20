@@ -21,8 +21,8 @@ namespace Jok.Play.Controllers
                 Repo = "https://github.com/playerx/jok-play",
                 Latest = new
                 {
-                    js = Request.Url.AbsoluteUri + "js",
-                    css = Request.Url.AbsoluteUri + "css"
+                    JS = Request.Url.ToString() + "js/v1",
+                    CSS = Request.Url.ToString() + "css/v1"
                 }
             }, JsonRequestBehavior.AllowGet);
         }
@@ -39,9 +39,12 @@ namespace Jok.Play.Controllers
             return Redirect(Request.Url.Scheme + "://" + Request.Url.Host + ":" + Request.Url.Port + Styles.Url("~/bundles/css"));
         }
 
-        public ActionResult Test()
+        public ActionResult Demo(string id = "V1")
         {
-            return View();
+            if (id != "V1" || id != "V2")
+                id = "V1";
+
+            return View("Demo" + id);
         }
     }
 }
