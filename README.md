@@ -19,7 +19,7 @@ How to use:
 <html>
 <head>
     <title>Awesome Game</title>
-    @Styles.Render("~/css/v1")
+    <link href="http://play.jok.io/css/v1" rel="stylesheet"/>
     <script>
         var jok = {};
 
@@ -36,7 +36,7 @@ How to use:
     <div id="Game">
         ...Awesome game stuff here...
     </div>
-    @Scripts.Render("~/js/v1")
+    <script src="http://play.jok.io/js/v1"></script>
 </body>
 </html>
 ```
