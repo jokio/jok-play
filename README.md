@@ -19,22 +19,24 @@ How to use:
 <html>
 <head>
     <title>Awesome Game</title>
-    <link href="http://play.jok.io/css" rel="stylesheet" />
+    @Styles.Render("~/css/v1")
     <script>
         var jok = {};
 
         jok.config = {
-            channel: '',
+            gameid: '0',
+            channel: 'LYIhVZH1k0qgLFARiO99mQ',
             language: 'en_US',
-            exitUrl: 'http://somewhere_to_exit.com'
+            exitUrl: 'http://somewhere_to_exit.com',
         }
+
     </script>
 </head>
 <body>
     <div id="Game">
         ...Awesome game stuff here...
     </div>
-    <script src="http://play.jok.io/js"></script>
+    @Scripts.Render("~/js/v1")
 </body>
 </html>
 ```
