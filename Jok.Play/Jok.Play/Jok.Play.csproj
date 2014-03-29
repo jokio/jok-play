@@ -139,6 +139,7 @@
     <Content Include="Content\Audios\challenge.mp3" />
     <Content Include="Content\Audios\gamestart.mp3" />
     <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\Github.css" />
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -355,6 +356,7 @@
     <Content Include="Scripts\jok.socket.io.js" />
     <Content Include="Scripts\V1\jquery-1.9.1.min.map" />
     <Content Include="Views\Home\DemoV1.cshtml" />
+    <Content Include="Views\Home\Github.cshtml" />
     <TypeScriptCompile Include="Scripts\typings\jquery.cookie\jquery.cookie.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\V2\JK.Config.ts" />

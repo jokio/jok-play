@@ -46,5 +46,16 @@ namespace Jok.Play.Controllers
 
             return View("Demo" + id);
         }
+
+
+        public ActionResult Github(string visitUrl)
+        {
+            if (String.IsNullOrEmpty(visitUrl))
+                visitUrl = "https://github.com/jokio/jok-play";
+
+            ViewBag.VisitUrl = visitUrl;
+
+            return View();
+        }
     }
 }
