@@ -19,22 +19,24 @@ How to use:
 <html>
 <head>
     <title>Awesome Game</title>
-    <link href="http://play.jok.io/css" rel="stylesheet" />
+    <link href="http://play.jok.io/css/v1" rel="stylesheet"/>
     <script>
         var jok = {};
 
         jok.config = {
+            gameid: '0',
             channel: '',
             language: 'en_US',
-            exitUrl: 'http://somewhere_to_exit.com'
+            exitUrl: 'http://somewhere_to_exit.com',
         }
+
     </script>
 </head>
 <body>
     <div id="Game">
         ...Awesome game stuff here...
     </div>
-    <script src="http://play.jok.io/js"></script>
+    <script src="http://play.jok.io/js/v1"></script>
 </body>
 </html>
 ```
