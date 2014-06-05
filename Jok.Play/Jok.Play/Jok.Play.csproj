@@ -225,7 +225,7 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\FontAwesome.otf" />
-    <None Include="Properties\PublishProfiles\play.jok.io.pubxml" />
+    <None Include="Properties\PublishProfiles\Jok.Play.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Images\back-button-white.png" />
     <Content Include="Images\back-button.png" />

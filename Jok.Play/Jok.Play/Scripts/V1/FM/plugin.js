@@ -296,8 +296,12 @@ $(function () {
     }
 
 
-    $.get('http://api.jok.ge/musicchannel/0/getall?sid=' + $.cookie('sid'), function (data) {
-        var list = (typeof data == "string") ? JSON.parse(data): data;
+    $.get('http://api.jok.io/music/channels/?sid=' + $.cookie('sid'), function (data) {
+        var list = (typeof data == "string") ? JSON.parse(data) : data;
+        if (!list.IsSuccess) return;
+
+        list = list.Data;
+
         MusicChannels.activeChannels = list;
 
         for (var i = 0; i < list.length; i++) {
