@@ -1,0 +1,133 @@
+﻿
+
+#RightPanel {
+    position: fixed;
+    right: 0px;
+    width: 300px;
+    top: 0px;
+    bottom: 0px;
+}
+
+
+
+#RightPanel .chat_messages {
+    right: 0px;
+    left: 0px;
+    /*top: 281px;*/
+    top: 0px;
+    position: absolute;
+    bottom: 30px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: silver;
+    margin-left: 2px;
+    text-align: left;
+    background: white url('/Images/chat_bg.png');
+}
+
+#RightPanel .chat_messages .bubles_container {
+    right: 0px;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    position: absolute;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 4px 3px;
+}
+
+
+#RightPanel .chat_messages .buble {
+    margin-bottom: 7px;
+    padding: 3px 6px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    padding-bottom: 10px;
+}
+
+#RightPanel .chat_messages .buble.colorJ {
+    background-color: rgba(3, 3, 3, 0.03);
+}
+
+#RightPanel .chat_messages .buble.color0 {
+    background-color: rgba(3, 255, 3, 0.03);
+}
+
+#RightPanel .chat_messages .buble.color1 {
+    background-color: rgba(31, 0, 255, 0.07);
+}
+
+#RightPanel .chat_messages .buble.color2 {
+    background-color: rgba(255, 10, 10, 0.06);
+}
+
+#RightPanel .chat_messages .buble.color3 {
+    background-color: rgba(8, 199, 0, 0.1);
+    text-align: right;
+}
+
+#RightPanel .chat_messages .buble.color4 {
+    background-color: rgba(255, 214, 0, 0.15);
+}
+
+#RightPanel .chat_messages .buble span.nick {
+    color: rgb(141, 141, 141);
+}
+
+#RightPanel .chat_messages .buble div {
+    margin-top: 3px;
+    margin-left: 8px;
+}
+
+#RightPanel .chat_input {
+    position: absolute;
+    bottom: 0px;
+    left: 2px;
+    right: 0px;
+    border-top: 1px solid rgb(230, 230, 230);
+}
+
+#RightPanel .chat_input input {
+    border-width: 0px;
+    background-color: transparent;
+    width: 284px;
+    padding: 6px;
+}
+
+#RightPanel .chat_input .smiles_opener {
+    margin-bottom: -4px;
+    opacity: 0.7;
+    margin-left: -5px;
+}
+
+#RightPanel .chat_input .smiles_opener:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+
+
+
+#RightPanel .chat_messages a.ads {
+    color: #428BCA;
+    text-align: center;
+    text-decoration: none;
+}
+
+
+#RightPanel .chat_messages a.ads:hover {
+    color: #2A6496;
+    text-decoration: underline;
+}
+
+
+#RightPanel .chat_messages a.ads img {
+    max-height: 150px;
+    width: 240px;
+}
+
+
+#RightPanel .chat_messages a.ads img span {
+}

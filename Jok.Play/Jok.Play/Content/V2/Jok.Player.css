@@ -1,0 +1,186 @@
+﻿
+
+.jok_player {
+    position: relative;
+    min-height: 130px;
+    width: 90px;
+}
+
+.jok_player .avatar {
+    height: 119px;
+    position: relative;
+    z-index: 1;
+    width: 90px;
+}
+
+.jok_player .offline_title {
+    display: none;
+    padding: 4px 7px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    position: absolute;
+    bottom: 43px;
+    right: 0px;
+    color: #FFF;
+    z-index: 10;
+}
+
+.jok_player .nick {
+    position: relative;
+    color: white;
+    margin-right: -20px;
+    margin-left: -20px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.jok_player .nick span {
+    padding: 2px 7px;
+    background-color: rgba(0, 0, 0, 0.298039);
+    border-radius: 4px;
+    min-width: 70px;
+    display: inline-block;
+}
+
+.jok_player .wins {
+    color: rgba(255, 255, 255, 0.66);
+    font-weight: bold;
+    font-size: 28px;
+    position: absolute;
+    top: 90px;
+}
+
+.jok_player .added_points {
+}
+
+
+.jok_player .score {
+}
+
+.jok_player .progressbar {
+}
+
+
+
+.jok_player .chat_bubble {
+    position: absolute;
+    left: 110px;
+    top: 0px;
+    min-height: 60px;
+    min-width: 110px;
+    background: white;
+    max-width: 300px;
+    border: 2px solid gray;
+    border-radius: 5px;
+    text-align: center;
+    display: none;
+}
+
+.jok_player .chat_bubble:before {
+    content: "";
+    position: absolute;
+    border-style: solid;
+    display: block;
+    width: 0;
+    top: 19px;
+    bottom: auto;
+    left: -20px;
+    border-width: 15px 20px 0px 0;
+    border-color: transparent #FFFFFF;
+}
+
+.jok_player .chat_bubble div.inner {
+    justify-content: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 17px;
+}
+
+.jok_player .chat_bubble div.msg {
+    display: table-cell;
+    vertical-align: middle;
+    width: 110px;
+    height: 52px;
+    text-align: center;
+}
+
+.jok_player .buzz {
+    position: absolute;
+    top: 55px;
+    font-size: 13px;
+    cursor: pointer;
+    width: 40px;
+    height: 14px;
+    right: -58px;
+    font-family: Times New Roman;
+    display: none;
+}
+
+.jok_player .ready {
+}
+
+.jok_player .music_speakers {
+    display: none;
+    z-index: 1;
+    position: absolute;
+    top: -42px;
+    left: 50%;
+    margin-left: -56px;
+    width: 110px;
+}
+
+.jok_player .rate {
+}
+
+.jok_player .playing_music_channel {
+    position: absolute;
+    top: 80px;
+    padding: 3px 7px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #FFF;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 3;
+    left: 14px;
+    right: 15px;
+    border-radius: 4px;
+    opacity: .7;
+    display: none;
+    text-align: center;
+}
+
+.jok_player .playing_music_channel:hover {
+    cursor: pointer;
+    opacity: 1;
+}
+
+
+
+
+
+
+/*Offline*/
+
+.jok_player.offline .avatar {
+    opacity: .8;
+}
+
+.jok_player.offline .offline_title {
+    display: block;
+}
+
+
+
+/*Invert*/
+
+.jok_player.invert .chat_bubble {
+    right: 110px;
+    left: auto;
+}
+
+.jok_player.invert .chat_bubble:before {
+    right: -20px;
+    left: auto;
+    border-width: 15px 0 0px 20px;
+}

@@ -4,45 +4,85 @@
     bottom: 0px;
     left: 0px;
     right: 0px;
-    min-width: 800px;
+    min-width: 500px;
     min-height: 750px;
     background: rgb(74, 94, 67);
     font-family: 'Helvetica Neue', Helvetica, Arial;
     font-size: 14px;
-}
-
-#Background {
-    background: url('/Images/V2/bg.png') repeat;
-    opacity: .5;
-    position: fixed;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-}
-
-#ExitButton {
-    z-index: 10;
-    position: absolute;
-    left: 10px;
-    cursor: pointer;
-    top: 10px;
-    background: url('/Images/V2/back-button-white.png') no-repeat;
-    background-size: 27px;
-    background-position: 6px 6px;
-    height: 45px;
-    opacity: .5;
-    padding-left: 39px;
-    padding-top: 9px;
-    font-size: 17px;
-    text-align: left;
-    color: rgba(0, 0, 0, 0);
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    text-align: center;
+    transition: 200ms linear;
+    overflow-x: hidden;
 }
+
+
+#Jok.panel_open {
+    margin-right: 300px;
+}
+
+
+#Jok .circle {
+    border-radius: 100%;
+    border: 1px solid white;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    position: relative;
+    vertical-align: middle;
+    margin-bottom: 5px;
+    font-size: 21px;
+}
+
+#Jok .circle i {
+    position: absolute;
+    top: 4px;
+    left: 10px;
+}
+
+#Background {
+    background: rgb(74, 94, 67);
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 10;
+}
+
+#Background2 {
+    background: url('/Images/V2/bg.png') repeat;
+    opacity: .5;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 10;
+}
+
+#ExitButton {
+    z-index: 10;
+    position: absolute;
+    left: 20px;
+    cursor: pointer;
+    top: 20px;
+    opacity: .5;
+    font-size: 17px;
+    text-align: left;
+    color: rgba(0, 0, 0, 0);
+}
+
+
+#ExitButton .circle {
+    color: white;
+    display: inline-block;
+    margin-right: 2px;
+}
+
 
 #ExitButton:hover {
     opacity: 1;
@@ -50,70 +90,227 @@
 }
 
 
-#RightPanelOpener {
+#ChatButton {
     z-index: 10;
-    padding-top: 3px;
-    cursor: pointer;
-    font-weight: normal;
-    margin-top: 5px;
-    background-size: 27px;
-    margin-right: 10px;
-    background-position: 100% 0%;
-    font-size: 17px;
-    color: transparent;
-    background-image: url(/Images/V2/details-white.png);
-    background-repeat: no-repeat no-repeat;
-    height: 46px;
-    padding-right: 34px;
-    opacity: 0.5;
-    display: block;
     position: absolute;
-    top: 10px;
-    right: 5px;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    right: 20px;
+    cursor: pointer;
+    top: 20px;
+    opacity: .5;
+    font-size: 17px;
+    text-align: left;
+    color: rgba(0, 0, 0, 0);
 }
 
-#RightPanelOpener:hover {
+#ChatButton .circle {
+    color: white;
+    display: inline-block;
+    margin-left: 2px;
+    font-size: 16px;
+}
+
+#ChatButton .circle i {
+    left: 7px;
+    top: 6px;
+}
+
+#ChatButton:hover {
     opacity: 1;
     color: white;
 }
 
-#SoundEffectsConfig {
+
+
+
+
+#ConfigButton {
     z-index: 10;
-    padding-top: 3px;
-    cursor: pointer;
-    font-weight: normal;
-    margin-top: 5px;
-    background-size: 27px;
-    margin-right: 10px;
-    background-position: 100% 0%;
-    font-size: 17px;
-    color: transparent;
-    background-image: url(/Images/V2/sound-effects-white.png);
-    background-repeat: no-repeat no-repeat;
-    height: 38px;
-    padding-right: 34px;
-    opacity: 0.5;
-    display: block;
     position: absolute;
-    bottom: 0px;
-    right: 5px;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    right: 20px;
+    cursor: pointer;
+    bottom: 15px;
+    opacity: .5;
+    font-size: 17px;
+    text-align: left;
+    color: rgba(0, 0, 0, 0);
 }
 
-#SoundEffectsConfig.disabled {
-    background-image: url('/Images/V2/sound-effects-disabled-white.png');
+#ConfigButton .circle {
+    color: white;
+    display: inline-block;
+    margin-left: 2px;
+    font-size: 19px;
 }
 
-#SoundEffectsConfig:hover {
+#ConfigButton .circle i {
+    left: 6px;
+    top: 6px;
+}
+
+#ConfigButton:hover {
     opacity: 1;
     color: #FFF;
+}
+
+
+
+
+#PlayerButton {
+    z-index: 10;
+    position: absolute;
+    left: 20px;
+    cursor: pointer;
+    bottom: 15px;
+    opacity: .5;
+    font-size: 17px;
+    text-align: left;
+    color: rgba(0, 0, 0, 0);
+}
+
+
+#PlayerButton .circle {
+    color: white;
+    display: inline-block;
+    margin-right: 2px;
+    font-size: 17px;
+}
+
+#PlayerButton .circle i {
+    left: 6px;
+    top: 7px;
+}
+
+#PlayerButton:hover {
+    opacity: 1;
+    color: #FFF;
+}
+
+#PlayerButton .player_circle {
+    transition: 200ms linear;
+}
+
+#PlayerButton .jokfm_plugin {
+    display: none;
+}
+
+
+#PlayerButton.opened {
+    opacity: 1;
+    cursor: default;
+}
+
+#PlayerButton.opened .title {
+    display: none;
+}
+
+#PlayerButton.opened i.main_icon {
+    display: none;
+}
+
+#PlayerButton.opened .player_circle {
+    width: 130px;
+    border-radius: 5px;
+    height: 75px;
+    border: 1px solid rgba(255, 255, 255, 0.19);
+}
+
+#PlayerButton.opened .jokfm_plugin {
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+#Authorization {
+    text-align: center;
+    margin-top: 70px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 311px;
+    position: relative;
+    z-index: 10;
+    display: none;
+}
+
+#Authorization input {
+    padding: 7px 10px;
+    border-radius: 3px;
+    border: 1px solid silver;
+    width: 210px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+#Authorization .separator {
+    margin-top: 30px;
+    color: silver;
+}
+
+#Authorization ul.social_connect {
+    margin-top: 20px;
+    width: 270px;
+    padding-bottom: 10px;
+    margin-left: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.54902);
+    border-radius: 5px;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.431373);
+}
+
+#Authorization ul.social_connect li {
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-align: left;
+    list-style: none;
+}
+
+#Authorization ul.social_connect li:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(235, 235, 235, 0.35);
+    border-radius: 4px;
+}
+
+
+#Authorization ul.social_connect li a {
+    padding-top: 5px;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    padding: 17px;
+    padding-left: 15px;
+    display: inline-block;
+    padding-right: 14px;
+    padding-bottom: 12px;
+}
+
+#Authorization ul.social_connect li:hover img {
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.37);
+}
+
+#Authorization ul.social_connect li img {
+    margin-right: 15px;
+    border: 0px solid white;
+    border-radius: 100%;
+    vertical-align: middle;
+    margin-top: -5px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.37);
+}
+
+#Authorization ul.social_connect li:hover a {
+    text-decoration: none;
+}
+
+#Authorization .login_description {
+    color: rgba(245, 222, 179, 0.37);
+    margin-top: 3px;
+    text-align: right;
+    margin-right: 52px;
 }

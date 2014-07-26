@@ -1,0 +1,14 @@
+﻿
+
+.modal-body {
+    background: rgb(247, 247, 247);
+}
+
+.modal-body .btn-block {
+    margin-top: 10px;
+}
+
+.modal-header i,
+.modal-body button i {
+    color: silver;
+}

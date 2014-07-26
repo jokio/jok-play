@@ -1,10 +1,11 @@
 ﻿#MusicPlayer {
+    display: none;
     width: 120px;
     color: white;
     z-index: 1000;
     position: absolute;
     left: 5px;
-    bottom: 0px;
+    bottom: 4px;
     font-size: 19px;
     -webkit-user-select: none;
     -khtml-user-select: none;

@@ -1,93 +1,79 @@
-﻿#SmilesBox {
-    position: fixed;
-    margin: 5px;
-    top: 50%;
-    border-radius: 5px;
-    border: 1px solid #C0C0C0;
-    left: 50%;
-    box-shadow: 0 0 7px rgba(0, 0, 0, 0.7);
-    background: #F8E3BE url('/Images/chat_bg.png');
-    display: none;
-    width: 405px;
-    margin-left: -203px;
-    padding-top: 10px;
-    margin-top: -130px;
-    z-index: 900;
+﻿#SmilesBoxModal {
 }
 
-#SmilesBox .smiles_container,
-#SmilesBox .vip_smiles_container {
+#SmilesBoxModal .smiles_container,
+#SmilesBoxModal .vip_smiles_container {
     margin: 5px;
-    float: left;
     margin-top: 0px;
     margin-left: 10px;
 }
 
-#SmilesBox .vip_smiles_container .disabled {
+#SmilesBoxModal .vip_smiles_container .disabled {
 }
 
-#SmilesBox .more,
-#SmilesBox .less {
-    float: right;
+#SmilesBoxModal .more,
+#SmilesBoxModal .less {
     color: gray;
     margin-right: 10px;
     cursor: pointer;
     font-size: 12px;
 }
 
-#SmilesBox .more:hover,
-#SmilesBox .less:hover {
+#SmilesBoxModal .more:hover,
+#SmilesBoxModal .less:hover {
     color: blue;
     text-decoration: underline;
 }
 
-#SmilesBox .vip_smiles {
+#SmilesBoxModal .vip_smiles {
     display: none;
 }
 
-#SmilesBox .item {
-    float: left;
-    padding: 5px;
-    width: 20px;
-    height: 20px;
+#SmilesBoxModal .item {
+    padding-top: 14px;
+    width: 50px;
+    height: 50px;
     border: 1px solid transparent;
     cursor: pointer;
+    display: inline-block;
+    margin: 2px;
 }
 
-#SmilesBox .item:hover {
+#SmilesBoxModal .item:hover {
     border: 1px solid silver;
-    border-radius: 5px;
+    border-radius: 100%;
     background: white;
 }
 
-#SmilesBox .vip_smiles_container.disabled .item {
+#SmilesBoxModal .vip_smiles_container.disabled .item {
     cursor: default;
 }
 
-#SmilesBox .vip_smiles_container.disabled .item span {
+#SmilesBoxModal .vip_smiles_container.disabled .item span {
     background-image: url('/images/emotions_disabled.png');
     opacity: .6;
 }
 
-#SmilesBox .vip_smiles_container.disabled .item:hover {
+#SmilesBoxModal .vip_smiles_container.disabled .item:hover {
     border: 1px solid transparent;
     border-radius: 0px;
     background: transparent;
 }
 
-#SmilesBox .headline {
+#SmilesBoxModal .headline {
     margin-bottom: 10px;
     font-family: Helvetica, Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif;
 }
 
-#SmilesBox .headline.vip {
-    margin-top: 100px;
+#SmilesBoxModal .headline.vip {
+    margin-top: 20px;
     text-align: left;
     margin-left: 10px;
     color: #808080;
-    font-weight: bold;
-    font-size: 12px;
+    font-size: 16px;
+    border-bottom: 1px solid rgb(226, 226, 226);
+    padding: 10px 0px;
 }
 
-#SmilesBox .headline span {
+#SmilesBoxModal .headline span {
 }

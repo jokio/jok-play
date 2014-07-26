@@ -41,7 +41,7 @@ namespace Jok.Play.Controllers
 
         public ActionResult Demo(string id = "V1")
         {
-            if (id != "V1" || id != "V2")
+            if (id != "V1" && id != "V2")
                 id = "V1";
 
             return View("Demo" + id);

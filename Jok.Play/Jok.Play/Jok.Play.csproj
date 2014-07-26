@@ -23,7 +23,7 @@
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <TypeScriptToolsVersion>0.9</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>1.0</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -138,7 +138,12 @@
     <Content Include="Content\Audios\buzz.mp3" />
     <Content Include="Content\Audios\challenge.mp3" />
     <Content Include="Content\Audios\gamestart.mp3" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Github.css" />
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -219,12 +224,21 @@
     <Content Include="Content\V1\v1.0.css" />
     <Content Include="Content\V1\v1.2.css" />
     <Content Include="Content\V1\v1.css" />
+    <Content Include="Content\V2\bootstrap.overrides.css" />
+    <Content Include="Content\V2\Jok.Player.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Content\V2\Jok.Chat.css" />
     <None Include="Properties\PublishProfiles\Jok.Play.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Images\back-button-white.png" />
@@ -325,8 +339,10 @@
     <Content Include="Images\V2\sound-effects-disabled-white.png" />
     <Content Include="Images\vignette.png" />
     <Content Include="Images\wood.jpg" />
+    <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\createjs.preloadjs-0.2.0.js" />
     <Content Include="Scripts\createjs.soundjs-0.3.0.js" />
+    <Content Include="Scripts\EventEmitter.js" />
     <Content Include="Scripts\FM\flashmediaelement.swf" />
     <Content Include="Scripts\FM\jok.audio.js" />
     <Content Include="Scripts\FM\mediaelement.js" />
@@ -355,13 +371,15 @@
     <Content Include="Scripts\Play\loader.js" />
     <Content Include="Scripts\jok.socket.io.js" />
     <Content Include="Scripts\V1\jquery-1.9.1.min.map" />
+    <Content Include="Scripts\V2\JP.js" />
     <Content Include="Views\Home\DemoV1.cshtml" />
     <Content Include="Views\Home\Github.cshtml" />
+    <Content Include="Scripts\V2\JP.Chat.js" />
     <TypeScriptCompile Include="Scripts\typings\jquery.cookie\jquery.cookie.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
-    <TypeScriptCompile Include="Scripts\V2\JK.Config.ts" />
-    <TypeScriptCompile Include="Scripts\V2\JK.Radio.ts" />
-    <TypeScriptCompile Include="Scripts\V2\JK.UI.ts" />
+    <TypeScriptCompile Include="Scripts\V2 %28old%29\JK.Config.ts" />
+    <TypeScriptCompile Include="Scripts\V2 %28old%29\JK.Radio.ts" />
+    <TypeScriptCompile Include="Scripts\V2 %28old%29\JK.UI.ts" />
     <Content Include="Scripts\V1\createjs.preloadjs-0.2.0.js" />
     <Content Include="Scripts\V1\createjs.soundjs-0.3.0.js" />
     <Content Include="Scripts\V1\FM\flashmediaelement.swf" />
@@ -391,11 +409,11 @@
     <Content Include="Scripts\V1\Play\jok.chat.js" />
     <Content Include="Scripts\V1\Play\jok.js" />
     <Content Include="Scripts\V1\Play\loader.js" />
-    <Content Include="Scripts\V2\Jok.API.js" />
-    <Content Include="Scripts\V2\Jok.Chat.js" />
-    <Content Include="Scripts\V2\Jok.GameEngine.js" />
-    <Content Include="Scripts\V2\Jok.js" />
-    <Content Include="Scripts\V2\Jok.Player.js" />
+    <Content Include="Scripts\V2 %28old%29\Jok.API.js" />
+    <Content Include="Scripts\V2 %28old%29\Jok.Chat.js" />
+    <Content Include="Scripts\V2 %28old%29\Jok.GameEngine.js" />
+    <Content Include="Scripts\V2 %28old%29\Jok.js" />
+    <Content Include="Scripts\V2 %28old%29\Jok.Player.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Styles\addins.css" />
     <Content Include="Styles\Addins\chat.css" />
@@ -413,7 +431,7 @@
     <Content Include="Styles\v1.0.css" />
     <Content Include="Styles\v1.2.css" />
     <Content Include="Styles\v1.css" />
-    <TypeScriptCompile Include="Scripts\V2\JK.ts" />
+    <TypeScriptCompile Include="Scripts\V2 %28old%29\JK.ts" />
     <Content Include="Content\V2\Jok.css" />
     <Content Include="Content\V2\Jok.Emotions.css" />
     <Content Include="Content\V2\Jok.MusicPlayer.css" />

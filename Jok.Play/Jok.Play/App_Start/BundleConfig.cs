@@ -86,14 +86,21 @@ namespace Jok.Play
 
             // V2
             bundles.Add(new ScriptBundle("~/js/v2").Include(
-                        "~/Scripts/V2/JK.js",
-                        "~/Scripts/V2/JK.Config.js",
-                        "~/Scripts/V2/JK.UI.js",
-                        "~/Scripts/V2/JK.Radio.js"
+                        "~/scripts/jquery-{version}.js",
+                        "~/scripts/jquery.cookie.js",
+                        "~/scripts/EventEmitter.js",
+                        "~/scripts/bootstrap.js",
+                        "~/Scripts/V2/JP.js",
+                        "~/Scripts/V2/JP.Chat.js"
             ));
-
+            
             bundles.Add(new StyleBundle("~/css/v2").Include(
+                        "~/Content/font-awesome.css",
+                        "~/Content/bootstrap.css",
+                        "~/Content/V2/bootstrap.overrides.css",
                         "~/Content/V2/Jok.css",
+                        "~/Content/V2/Jok.Player.css",
+                        "~/Content/V2/Jok.Chat.css",
                         "~/Content/V2/Jok.Notifications.css",
                         "~/Content/V2/Jok.Cubes.css",
                         "~/Content/V2/Jok.Emotions.css",
