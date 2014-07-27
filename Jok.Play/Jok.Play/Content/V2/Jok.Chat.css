@@ -6,6 +6,7 @@
     width: 300px;
     top: 0px;
     bottom: 0px;
+    z-index: -1;
 }
 
 
@@ -22,7 +23,6 @@
     border-top-color: silver;
     margin-left: 2px;
     text-align: left;
-    background: white url('/Images/chat_bg.png');
 }
 
 #RightPanel .chat_messages .bubles_container {

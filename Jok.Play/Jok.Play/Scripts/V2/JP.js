@@ -2,11 +2,11 @@
 
 
 
-JP.User = {
-    ID: 32,
-    IsVIPMember: true,
-    Nick: 'PlayerX',
-    LangID: 1
+JP.CurrentUser = {
+    //UserID: 32,
+    //IsVIPMember: true,
+    //Nick: 'PlayerX',
+    //LangID: 2
 }
 
 JP.Players = {};
@@ -49,7 +49,13 @@ JP.UI = {
 
             JP.Config.PlayerIsActive = true;
 
+            $.radio.play();
+
             $('#PlayerButton').addClass('opened');
+        });
+
+        $(document).on('contextmenu', '#ProfileModal,#SettingsModal', function () {
+            return false;
         });
 
         $(document).on('contextmenu', function () {
@@ -65,9 +71,64 @@ JP.UI = {
 
             text = '(' + text + ')';
 
-            JP.UI.AddChatMessage(JP.User.ID, JP.User.Nick, text);
+            JP.UI.AddChatMessage(JP.CurrentUser.UserID, JP.CurrentUser.Nick, text);
 
             JP.emit('ChatMessageSend', text);
+        });
+
+        $(document).on('click', '#RightPanel .chat_messages .buble a.ads', function () {
+            JP.UI._RemoveChatLog(-2);
+        });
+
+        $(document).on('click', '#MusicPlayer .item', function () {
+
+            if (JP.UI.sendMusicChannelInfoTimeout)
+                clearTimeout(JP.UI.sendMusicChannelInfoTimeout);
+
+            JP.UI._BroadcastListeningMusic();
+        });
+
+        $(document).on('click', '.jok_player .playing_music_channel', function () {
+            var channelid = $(this).attr('data-channelid');
+            if (!channelid) return;
+
+            var id;
+            $.radio._activeChannels.forEach(function (c, i) {
+                if (c.channelid == channelid)
+                    id = i;
+            });
+            if (!id && id != 0) return;
+
+            $.radio.play(id);
+
+            JP.UI._BroadcastListeningMusic();
+        });
+
+        $(document).on('click', '.jok_player .avatar', function () {
+
+            var userid = $(this).parent().data('userid');
+            if (!userid) return;
+
+            JP.UI.PlayerProfile(userid);
+        });
+
+        $(document).on('click', '.jok_player .nick .nick_inner', function () {
+
+            var userid = $(this).parent().parent().data('userid');
+            if (!userid) return;
+
+            JP.UI.PlayerProfile(userid);
+        });
+
+        $(document).on('click', '#ProfileModal button.invite_friend', function () {
+
+            var userid = $('#ProfileModal').data('userid');
+            if (!userid) return;
+
+            $(this).hide();
+            $('#ProfileModal button.friend_request_sent').show();
+
+            JP.API('/User/SendFriendRequest/' + userid);
         });
 
 
@@ -75,6 +136,18 @@ JP.UI = {
         $(document).on('keydown', this.OnKeyDown.bind(this));
 
         this.InitChatAds();
+
+
+        JP.API('/User/InfoBySID?sid=' + $.cookie('sid'), function (user) {
+
+            if (!user || !user.IsSuccess) {
+                $('#Game').hide();
+                $('#Authorization').show();
+                return;
+            }
+
+            JP.CurrentUser = user;
+        });
     },
 
     OnKeyDown: function (e) {
@@ -101,7 +174,7 @@ JP.UI = {
             var text = $('#ChatMessageInput').val();
             if (!text) return;
 
-            this.AddChatMessage(JP.User.ID, JP.User.Nick, text);
+            this.AddChatMessage(JP.CurrentUser.UserID, JP.CurrentUser.Nick, text);
             $('#ChatMessageInput').val('');
 
             JP.emit('ChatMessageSend', text);
@@ -141,11 +214,11 @@ JP.UI = {
         msg = JP.Chat.ReplaceSmiles(msg);      // Convert images
 
         this._ShowPlayerBubble(userid, msg);
-        this._AddChatLog(userid == JP.User.ID ? 3 : 1, userid, nick, msg, false);
+        this._AddChatLog(userid == JP.CurrentUser.UserID ? 3 : 1, userid, nick, msg, false);
 
     },
 
-    SetSelector: function (selector, userid) {
+    SetPlayer: function (selector, userid, cb) {
         if (!$(selector).length) return;
 
         this.GetPlayer(userid, function (player) {
@@ -154,34 +227,42 @@ JP.UI = {
             var uiPlayer = $(selector);
 
 
-            if (!uiPlayer.hasClass('jok_player'))
+            uiPlayer.attr('data-userid', userid);
+
+            if (!uiPlayer.hasClass('jok_player')) {
                 uiPlayer.addClass('jok_player');
+            }
 
             var avatar = uiPlayer.find('.avatar');
-            if (!avatar.length)
-                avatar = uiPlayer.append('<img class="avatar" />');
+            if (!avatar.length) {
+                uiPlayer.append('<img class="avatar" />');
+                avatar = uiPlayer.find('.avatar');
+            }
 
             avatar.attr('src', player.AvatarUrl);
 
 
             var nick = uiPlayer.find('.nick');
             if (!nick.length) {
-                nick = uiPlayer.append('<div class="nick">');
-                nick = nick.append('span');
+                uiPlayer.append('<div class="nick"><div class="nick_inner"><span></span><div class="bitting"></div></div></div>');
             }
+            nick = uiPlayer.find('span');
 
             nick.html(player.Nick);
 
-            uiPlayer.find('.offline_title').length && uiPlayer.append('<div class="offline_title">');
-            uiPlayer.find('.wins').length && uiPlayer.append('<div class="wins">');
-            uiPlayer.find('.added_points').length && uiPlayer.append('<div class="added_points">');
-            uiPlayer.find('.score').length && uiPlayer.append('<div class="score">');
-            uiPlayer.find('.progressbar').length && uiPlayer.append('<div class="progressbar">');
-            uiPlayer.find('.chat_bubble').length && uiPlayer.append('<div class="chat_bubble">');
-            uiPlayer.find('.ready').length && uiPlayer.append('<div class="ready">');
-            uiPlayer.find('.music_player').length && uiPlayer.append('<div class="music_player">');
-            uiPlayer.find('.rate').length && uiPlayer.append('<div class="rate">');
-            uiPlayer.find('.playing_music_channel').length && uiPlayer.append('<div class="playing_music_channel">');
+
+            !uiPlayer.find('.offline_title').length && uiPlayer.append('<div class="offline_title">Offline</div>');
+            !uiPlayer.find('.wins').length && uiPlayer.append('<div class="wins">');
+            !uiPlayer.find('.added_points').length && uiPlayer.append('<div class="added_points">');
+            !uiPlayer.find('.score').length && uiPlayer.append('<div class="score">');
+            !uiPlayer.find('.progressbar').length && uiPlayer.append('<div class="progressbar">');
+            !uiPlayer.find('.chat_bubble').length && uiPlayer.append('<div class="chat_bubble">');
+            !uiPlayer.find('.ready').length && uiPlayer.append('<div class="ready">');
+            !uiPlayer.find('.music_player').length && uiPlayer.append('<div class="music_player">');
+            !uiPlayer.find('.rate').length && uiPlayer.append('<div class="rate">');
+            !uiPlayer.find('.playing_music_channel').length && uiPlayer.append('<div class="playing_music_channel">');
+
+            cb && cb();
         });
     },
 
@@ -193,7 +274,7 @@ JP.UI = {
             return;
         }
 
-        JP.API('user/info/' + userid + '?gameid=12&languageID=' + JP.Config.LangID + '&sid=' + $.cookie('sid'), function (result) {
+        JP.API('user/info/' + userid + '?gameid=12&languageID=' + JP.CurrentUser.LangID + '&sid=' + $.cookie('sid'), function (result) {
             if (!result.IsSuccess) {
                 if (cb) cb(null);
                 return;
@@ -205,9 +286,129 @@ JP.UI = {
         });
     },
 
+    PlayerProfile: function (userid) {
+
+        this.GetPlayer(userid, function (player) {
+
+            $('#ProfileModal').attr('data-userid', player.UserID);
+            $('#ProfileModal .avatar').attr('src', player.AvatarUrl);
+            $('#ProfileModal .nick').html(player.Nick);
+
+            if (player.Game) {
+                $('#ProfileModal .level_name').html(player.Game.FromLevelName);
+                $('#ProfileModal .cups .golden span').html(player.Game.CupCountGold);
+                $('#ProfileModal .cups .silver span').html(player.Game.CupCountSilver);
+                $('#ProfileModal .cups .bronze span').html(player.Game.CupCountBronze);
+                $('#ProfileModal .cups div').show();
+            }
+            else {
+                $('#ProfileModal .level_name').html('New');
+                $('#ProfileModal .cups div').hide();
+            }
+
+            $('#ProfileModal .modal-footer button').hide();
+
+            if (userid == JP.CurrentUser.UserID) {
+                $('#ProfileModal button.yourself').show();
+            }
+            else {
+
+                //$('#ProfileModal button.report').show();
+
+                switch (player.RelationStatusID2) {
+
+                    case 2 /*Accepted*/:
+                        $('#ProfileModal button.your_friend').show();
+                        break;
+
+                    case 3 /*Rejected*/:
+                        break;
+
+                    case 4/*Pending*/:
+                        $('#ProfileModal button.friend_request_sent').show();
+                        break;
+
+                    case 1 /*New*/:
+                    default:
+                        $('#ProfileModal button.invite_friend').show();
+                        break;
+                }
+            }
+
+            $('#ProfileModal').modal();
+        });
+    },
+
+    PlayerActivate: function (userid, durationInSec) {
+
+        $('.jok_player').removeClass('active');
+
+        var user = $('.jok_player[data-userid=' + userid + ']');
+        if (!user.length) return;
+
+        var bitting = user.find('.nick .bitting');
+        if (!bitting.length) return;
+
+        user.addClass('active');
+
+        bitting.css('right', 0);
+
+        bitting.stop(true);
+        bitting.animate({ right: bitting.width() }, durationInSec * 1000, 'swing', function () {
+            bitting.css('right', 0);
+            user.removeClass('active');
+        });
+    },
+
+    UpdateUserListeningStatus: function (userid, isListening, channelID) {
+        var player = $('.jok_player[data-userid=' + userid + ']');
+        if (!player.length) return;
+
+        if (!isListening) {
+            player.find('.music_speakers').hide('fast');
+            player.find('.playing_music_channel').hide();
+            return;
+        }
+
+        player.find('.music_speakers').show('fast');
+
+        var title = '';
+        $.radio._activeChannels.forEach(function (c) {
+            if (c.channelid == channelID)
+                title = c.channel;
+        });
+
+        if (!title) return;
+
+        player.find('.playing_music_channel').attr('data-channelid', channelID);
+        player.find('.playing_music_channel').html(title);
+        player.find('.playing_music_channel').show();
+    },
+
 
     _ShowPlayerBubble: function (userid, msg) {
 
+        var plChat = $('.jok_player[data-userid=' + userid + '] .chat_bubble');
+        if (!plChat.length) return;
+
+
+        var hideTimeout = plChat.attr('data-hide-timeout');
+        if (hideTimeout)
+            clearTimeout(hideTimeout);
+
+        plChat.find('.inner').html(msg);
+        plChat.css('opacity', 0);
+        plChat.css('display', 'block');
+        plChat.fadeTo(400, 1);
+        hideTimeout = setTimeout(function () {
+
+            plChat.fadeTo(400, 0, function () {
+                plChat.hide();
+            });
+
+        }, (userid == JP.CurrentUser.UserID) ? 1000 : 9000);
+
+        plChat.attr('data-hide-timeout', hideTimeout);
     },
 
     _AddChatLog: function (PlayerNo, userid, nick, msg, forceNewGroup) {
@@ -216,7 +417,7 @@ JP.UI = {
 
         if (item.attr('data-userid') != userid || forceNewGroup) {
             item = $('<div class="buble color' + PlayerNo + '" data-userid="' + userid + '">');
-            item.append('<span class="nick">' + nick + (userid == JP.User.ID ? '' : ':') + '</span>');
+            item.append('<span class="nick">' + nick + (userid == JP.CurrentUser.UserID ? '' : ':') + '</span>');
         }
 
         item.append('<div>' + msg + '</span>');
@@ -251,6 +452,21 @@ JP.UI = {
 
         $('#RightPanel .chat_messages .buble[data-userid=' + userid + ']').remove();
     },
+
+    _BroadcastListeningMusic: function () {
+
+        JP.UI.sendMusicChannelInfoTimeout = setTimeout(function () {
+
+            var channelid;
+            try {
+                channelid = $.radio._activeChannels[$.radio._itemid].channelid;
+            }
+            catch (err) { }
+
+            JP.emit('MusicPlayerStateChanged', $.radio.isPlaying, channelid);
+        }, 100);
+    },
+
 }
 
 
@@ -289,6 +505,15 @@ JP.Config = {
         } else {
             $('#Jok').hasClass('panel_open') && $('#Jok').removeClass('panel_open');
         }
+    },
+
+    GetCookieDomain: function () {
+        var host = window.location.hostname;
+
+        var firstIndex = host.indexOf('.');
+        var lastIndex = host.lastIndexOf('.');
+
+        return (firstIndex != lastIndex) ? host.substring(firstIndex) : (lastIndex > -1 ? '.' + host : '');
     }
 }
 

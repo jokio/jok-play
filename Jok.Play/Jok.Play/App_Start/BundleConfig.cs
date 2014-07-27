@@ -91,7 +91,10 @@ namespace Jok.Play
                         "~/scripts/EventEmitter.js",
                         "~/scripts/bootstrap.js",
                         "~/Scripts/V2/JP.js",
-                        "~/Scripts/V2/JP.Chat.js"
+                        "~/Scripts/V2/JP.Chat.js",
+                        "~/scripts/V2/FM/mediaelement.js",
+                        "~/scripts/V2/FM/jok.audio.js",
+                        "~/scripts/V2/FM/plugin.js"
             ));
             
             bundles.Add(new StyleBundle("~/css/v2").Include(

@@ -34,12 +34,30 @@
     margin-top: 5px;
 }
 
+
+
 .jok_player .nick span {
     padding: 2px 7px;
     background-color: rgba(0, 0, 0, 0.298039);
     border-radius: 4px;
     min-width: 70px;
     display: inline-block;
+    vertical-align: top;
+}
+
+.jok_player .nick .nick_inner{
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+.jok_player.active .nick .bitting{
+    display: none;
+}
+
+.jok_player:hover .nick span {
+    box-shadow: 0 0 5px gold;
 }
 
 .jok_player .wins {
@@ -153,6 +171,55 @@
 .jok_player .playing_music_channel:hover {
     cursor: pointer;
     opacity: 1;
+}
+
+
+
+
+
+
+/*Active*/
+
+.jok_player.active .nick .bitting {
+    content: '';
+    background: green;
+    left: 0px;
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    opacity: .7;
+    border-radius: 2px;
+    -webkit-animation: BackgroundBitting 2s infinite; /* Safari 4+ */
+    -moz-animation: BackgroundBitting 2s infinite; /* Fx 5+ */
+    -o-animation: BackgroundBitting 2s infinite; /* Opera 12+ */
+    animation: BackgroundBitting 2s infinite; /* IE 10+, Fx 29+ */
+}
+
+
+@-webkit-keyframes BackgroundBitting {
+    50% {
+        background: lime;
+    }
+}
+
+@-moz-keyframes BackgroundBitting {
+    50% {
+        background: lime;
+    }
+}
+
+@-o-keyframes BackgroundBitting {
+    50% {
+        background: lime;
+    }
+}
+
+@keyframes BackgroundBitting {
+    50% {
+        background: lime;
+    }
 }
 
 

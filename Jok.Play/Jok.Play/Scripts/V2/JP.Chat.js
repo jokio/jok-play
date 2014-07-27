@@ -10,7 +10,7 @@
 			if (name == 'surprised') continue;
 
 			number++;
-			var title = (number > 24 && !JP.User.IsVIPMember) ? 'VIP Only' : name;
+			var title = (number > 24 && !JP.CurrentUser.IsVIPMember) ? 'VIP Only' : name;
 
 			$(number <= 24 ? '#SmilesBoxModal .smiles_container' : '#SmilesBoxModal .vip_smiles_container').append(['<div class="item" data-name="', name, '" title="(', title, ')"><span class="emotion ', name, '" /></div>'].join(''));
 		}

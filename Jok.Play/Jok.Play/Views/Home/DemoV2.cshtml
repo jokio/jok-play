@@ -140,22 +140,22 @@
             <div class="chat_input">
                 @if (String.IsNullOrEmpty(ViewBag.Channel))
                 {
-                <input id="ChatMessageInput" type="text" placeholder="Press Enter & Send Message" maxlength="100" />
+                    <input id="ChatMessageInput" type="text" placeholder="Press Enter & Send Message" maxlength="100" />
                 }
                 else
                 {
-                <input id="ChatMessageInput" type="text" placeholder="Chat is pribate" maxlength="100" />
+                    <input id="ChatMessageInput" type="text" placeholder="Chat is pribate" maxlength="100" />
                 }
             </div>
         </div>
 
 
-        <div id="SmilesBoxModal" class="modal  " tabindex="-1" role="dialog" aria-labelledby="SettingsModal" aria-hidden="true">
+        <div id="SmilesBoxModal" class="modal  " tabindex="-1" role="dialog" aria-labelledby="SmilesBoxModal" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h3 class="modal-title" id="SettingsModal"><i class="fa fa-smile-o"></i> Send Emotions</h3>
+                        <h3 class="modal-title"><i class="fa fa-smile-o"></i> Send Emotions</h3>
                     </div>
                     <div class="modal-body">
                         <div class="smiles_container">
@@ -172,106 +172,67 @@
         </div>
 
 
-        @**@
-        <!-- [/Corner Objects] -->
-        @*    <div id="Notifications">
-                <div class="item connecting" style="display: block;">
-                    R.A023
-                </div>
-                <div class="item connected">
-                    R.A024
-                </div>
-                <div class="item not_authorized">
-                    R.A025
-                </div>
-                <div class="item waiting_opponents">
-                    R.A026
-                </div>
-                <div class="item waiting_friends">
-                    Html.Raw(R.A027)<br />
-                    <input type="text" readonly style="padding: 13px; width: 230px;" />
-                </div>
-                <div class="item game_starting_select_positions">
-                    R.A028 <br />
-                    R.A029 <span style="font-size: 20px;">10</span> R.A030
-                </div>
-                <div class="item game_finished">
-                    R.A031<br />
-                    <table id="FinishResults"></table>
-                    <a id="PlayAgain" href="#">
-                        R.A032
-                    </a>
-                </div>
-                <div class="item connection_closed" style="cursor:pointer;" onclick="document.location.reload()">
-                    R.A033<br />
-                    R.A034
-                </div>
-            </div>
-            <div id="RightPanel">
-                <div class="results">
-                    <div class="mini_results">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td></td>
-                                    <td><div></div></td>
-                                    <td><div></div></td>
-                                    <td><div></div></td>
-                                    <td><div></div></td>
-                                </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
+
+
+        <div id="ProfileModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ProfileModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h3 class="modal-title"><span class="nick">Nick Here</span></h3>
                     </div>
-                    <div class="full_results">
+                    <div class="modal-body">
+
+                        <img src="" class="avatar" />
+
+                        <div class="cups">
+                            <div class="golden">
+                                <span>0</span>
+                                <i class="fa fa-trophy"></i>
+                            </div>
+                            <div class="silver">
+                                <span>10</span>
+                                <i class="fa fa-trophy"></i>
+                            </div>
+                            <div class="bronze">
+                                <span>0</span>
+                                <i class="fa fa-trophy"></i>
+                            </div>
+                        </div>
+
+
+                        <div class="level_name"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="btn-group" style="float:left;">
+                            <button class="btn btn-danger dropdown-toggle report" data-toggle="dropdown" style="min-width: 119px;">Report <span class="caret"></span></button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#" class="report_option" data-reason="1">Cheating</a></li>
+                                <li><a href="#" class="report_option" data-reason="1">Bad words in chat</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#" class="report_option" data-reason="1">Just don't like</a></li>
+                            </ul>
+                        </div>
+                        <button class="btn btn-default yourself" disabled>It's you</button>
+                        <button class="btn btn-default your_friend" disabled>Your Friend</button>
+                        <button class="btn btn-default friend_request_sent" disabled>Friend request sent...</button>
+                        <button class="btn btn-success invite_friend">Send friend request</button>
                     </div>
                 </div>
-                <div class="chat_messages">
-                    <div class="container">
-                    </div>
-                </div>
-                <div class="chat_input">
-                    @if (String.IsNullOrEmpty(ViewBag.Channel))
-                    {
-                        <input id="ChatMessageInput" type="text" placeholder="R.A037" readonly maxlength="100" />
-                    }
-                    else
-                    {
-                        <input id="ChatMessageInput" type="text" placeholder="R.A047" maxlength="100" />
-                    }
-                </div>
             </div>
-            <div id="Stats">
-                <div class="dring">
-                    R.A038
-                    <span>~</span>
-                </div>
-                <div class="dominating">
-                </div>
-            </div>
-            <div id="SmilesBox">
-                <div class="headline">
-                    <span>R.A052</span>
-                </div>
-                <div class="smiles_container">
-                </div>
-                <div class="headline vip">
-                    <span>R.A053</span>
-                </div>
-                <div class="vip_smiles_container @(ViewBag.IsVIPMember == true ? "" : "disabled")">
-                </div>
-            </div>*@
+        </div>
 
     </div>
 
     <style>
-        #Jok.panel_open ~ #Game{
+        #Jok.panel_open ~ #Game {
             margin-right: 300px;
         }
+
         #Game {
             position: relative;
-            z-index: 100;
             transition: 200ms;
+            height: 500px;
         }
 
         #Player1 {
@@ -285,12 +246,29 @@
             top: 100px;
             right: 30%;
         }
+
+        #Player3 {
+            position: absolute;
+            bottom: 100px;
+            right: 30%;
+        }
+
+        #Player4 {
+            position: absolute;
+            bottom: 100px;
+            left: 30%;
+        }
     </style>
     <div id="Game">
-        <div id="Player1" class="jok_player">
+        <div id="Player1" class="jok_player" data-userid="32">
             <img src="http://play.jok.io/images/speakers2.png" class="music_speakers">
             <img class="avatar" src="https://jok.io/portal/avatar/~base_skin_01b~Clothes_14~Eyes_01~Mouth_02~Eyebrows_07~~Hair_03~Accessories_03~8587994621026700984" />
-            <div class="nick"><span>PlayerX</span></div>
+            <div class="nick">
+                <div class="nick_inner">
+                    <span>PlayerX</span>
+                    <div class="bitting"></div>
+                </div>
+            </div>
             <div class="offline_title">Offline</div>
             <div class="wins"></div>
             <div class="added_points"></div>
@@ -317,11 +295,22 @@
             <div class="music_player"></div>
             <div class="rate"></div>
         </div>
+        <div id="Player3">
+        </div>
+        <div id="Player4">
+        </div>
     </div>
     <script>
         JP.on('ChatMessageSend', function (msg) {
             console.log('Message sent', msg);
         });
+
+        JP.UI.SetPlayer('#Player3', 100, function () {
+            $('#Player3').addClass('offline');
+            $('#Player3').addClass('active');
+        });
+
+        JP.UI.SetPlayer('#Player4', 310820);
     </script>
 </body>
 </html>

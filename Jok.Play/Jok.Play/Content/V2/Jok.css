@@ -15,10 +15,9 @@
     -ms-user-select: none;
     user-select: none;
     text-align: center;
-    transition: 200ms linear;
     overflow-x: hidden;
+    transition: 200ms linear;
 }
-
 
 #Jok.panel_open {
     margin-right: 300px;
@@ -50,7 +49,7 @@
     bottom: 0px;
     left: 0px;
     right: 0px;
-    z-index: 10;
+    z-index: 0;
 }
 
 #Background2 {
@@ -61,11 +60,11 @@
     bottom: 0px;
     left: 0px;
     right: 0px;
-    z-index: 10;
+    z-index: 0;
 }
 
 #ExitButton {
-    z-index: 10;
+    z-index: 100;
     position: absolute;
     left: 20px;
     cursor: pointer;
@@ -91,7 +90,7 @@
 
 
 #ChatButton {
-    z-index: 10;
+    z-index: 100;
     position: absolute;
     right: 20px;
     cursor: pointer;
@@ -124,7 +123,7 @@
 
 
 #ConfigButton {
-    z-index: 10;
+    z-index: 100;
     position: absolute;
     right: 20px;
     cursor: pointer;
@@ -156,7 +155,7 @@
 
 
 #PlayerButton {
-    z-index: 10;
+    z-index: 100;
     position: absolute;
     left: 20px;
     cursor: pointer;
@@ -313,4 +312,67 @@
     margin-top: 3px;
     text-align: right;
     margin-right: 52px;
+}
+
+
+
+
+
+#ProfileModal {
+    min-width: 500px;
+}
+
+#ProfileModal .nick {
+    color: #55b919;
+}
+
+#ProfileModal .avatar {
+    max-height: 170px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+#ProfileModal .modal-body {
+    height: 200px;
+    position: relative;
+}
+
+#ProfileModal .cups {
+    position: absolute;
+    top: 60px;
+    font-size: 26px;
+    left: 190px;
+    right: 10px;
+    text-align: left;
+    border-bottom: 1px solid rgba(231, 231, 231, 0.69);
+    padding-left: 10px;
+    min-height: 38px;
+}
+
+#ProfileModal .cups div {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 20px;
+}
+
+#ProfileModal .cups .golden {
+    color: gold;
+}
+
+#ProfileModal .cups .silver {
+    color: silver;
+}
+
+#ProfileModal .cups .bronze {
+    color: brown;
+}
+
+#ProfileModal .level_name {
+    padding: 7px 2px;
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    font-size: 25px;
+    color: gray;
 }

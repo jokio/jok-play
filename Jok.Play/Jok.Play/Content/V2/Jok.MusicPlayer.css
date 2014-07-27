@@ -41,12 +41,10 @@
 
 #MusicPlayer .next_button {
     margin-left: 5px;
-    display: none;
 }
 
 #MusicPlayer .previous_button {
     margin-right: 5px;
-    display: none;
 }
 
 #MusicPlayer .active_channel {
