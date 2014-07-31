@@ -42,46 +42,22 @@
             bottom: 100px;
             left: 30%;
         }
+        #test{
+            position: absolute;
+            left: 50%;
+        }
     </style>
     <div id="Game">
         <div id="Player1" class="jok_player" data-userid="32">
-            <img src="http://play.jok.io/images/speakers2.png" class="music_speakers">
-            <img class="avatar" src="https://jok.io/portal/avatar/~base_skin_01b~Clothes_14~Eyes_01~Mouth_02~Eyebrows_07~~Hair_03~Accessories_03~8587994621026700984" />
-            <div class="nick">
-                <div class="nick_inner">
-                    <span>PlayerX</span>
-                    <div class="bitting"></div>
-                </div>
-            </div>
-            <div class="offline_title">Offline</div>
-            <div class="wins"></div>
-            <div class="added_points"></div>
-            <div class="score"></div>
-            <div class="progressbar"></div>
-            <div class="chat_bubble">
-                <div class="inner">HollaHollaHollaHollaHollaHollaHollaHollaHollaHollaHollaHollaHollaHollaHollaHollaHollaHollaHollaHolla</div>
-            </div>
-            <div class="ready"></div>
-            <div class="music_player"></div>
-            <div class="rate"></div>
-            <div class="playing_music_channel">HITS</div>
         </div>
         <div id="Player2" class="jok_player invert offline">
-            <img class="avatar" src="https://jok.io/portal/avatar/~base_skin_01b~Clothes_14~Eyes_01~Mouth_02~Eyebrows_07~~Hair_03~Accessories_03~8587994621026700984" />
-            <div class="nick"><span>PlayerX</span></div>
-            <div class="offline_title">Offline</div>
-            <div class="wins"></div>
-            <div class="added_points"></div>
-            <div class="score"></div>
-            <div class="progressbar"></div>
-            <div class="chat_bubble"></div>
-            <div class="ready"></div>
-            <div class="music_player"></div>
-            <div class="rate"></div>
         </div>
         <div id="Player3">
         </div>
         <div id="Player4">
+        </div>
+        <div id="test">
+            
         </div>
     </div>
     <script>
@@ -93,6 +69,8 @@
 
         JP.on('Ready', function () {
 
+            JP.UI.ShowNotification('invite_friend');
+
             JP.UI.SetPlayer('#Player3', 100, function () {
                 $('#Player3').addClass('offline');
                 $('#Player3').addClass('active');
@@ -100,9 +78,6 @@
 
             JP.UI.SetPlayer('#Player4', 310820);
 
-            JP.UI.ShowNotification('message', function (item) {
-                item.html('Initialized!');
-            })
         });
     </script>
 </body>

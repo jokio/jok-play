@@ -232,7 +232,9 @@
     <Content Include="Content\V1\v1.0.css" />
     <Content Include="Content\V1\v1.2.css" />
     <Content Include="Content\V1\v1.css" />
+    <Content Include="Content\V2\bootstrap.css" />
     <Content Include="Content\V2\bootstrap.overrides.css" />
+    <Content Include="Content\V2\font-awesome.css" />
     <Content Include="Content\V2\Jok.Player.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -390,6 +392,9 @@
     <Content Include="Scripts\Play\loader.js" />
     <Content Include="Scripts\jok.socket.io.js" />
     <Content Include="Scripts\V1\jquery-1.9.1.min.map" />
+    <Content Include="Scripts\V2\bootstrap.js" />
+    <Content Include="Scripts\V2\EventEmitter.js" />
+    <Content Include="Scripts\V2\FastClick.js" />
     <Content Include="Scripts\V2\FM\flashmediaelement.swf" />
     <Content Include="Scripts\V2\FM\jok.audio.js" />
     <Content Include="Scripts\V2\FM\mediaelement.js" />
@@ -397,6 +402,10 @@
     <Content Include="Scripts\V2\JP.Audio.js" />
     <Content Include="Scripts\V2\JP.js" />
     <Content Include="Scripts\V2\JP.ML.js" />
+    <Content Include="Scripts\V2\jquery-2.1.1.js" />
+    <Content Include="Scripts\V2\jquery.cookie.js" />
+    <Content Include="Scripts\V2\ZeroClipboard.js" />
+    <Content Include="Scripts\V2\ZeroClipboard.swf" />
     <Content Include="Views\Home\DemoV1.cshtml" />
     <Content Include="Views\Home\Github.cshtml" />
     <Content Include="Scripts\V2\JP.Chat.js" />
@@ -475,9 +484,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\DemoV2.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Releases\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

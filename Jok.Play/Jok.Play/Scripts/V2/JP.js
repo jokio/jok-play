@@ -20,6 +20,8 @@ JP.UI = {
         $('body').hide();
         $('body').fadeTo(0, 0);
 
+        FastClick.attach(document.body);
+
         var sid = JP.Config.GetQueryVariable('sid');
         if (sid)
             $.cookie('sid', sid, { expire: 1200 });
@@ -36,10 +38,6 @@ JP.UI = {
                 return;
             }
 
-            if (user.IsVIP) {
-                $('.vip_smiles_container').removeClass('disabled');
-            }
-
             JP.CurrentUser = user;
 
             var lang = 'en';
@@ -51,9 +49,12 @@ JP.UI = {
                 lang = 'ru';
 
 
-
             JP.ML.Init(lang);
             JP.UI.Load();
+
+            if (user.IsVIP) {
+                $('#SmilesBoxModal .vip_smiles_container').removeClass('disabled');
+            }
         });
     },
 
@@ -67,7 +68,7 @@ JP.UI = {
         jok.append('<div id="ConfigButton" data-toggle="modal" data-target="#SettingsModal"> ' + JP.ML.GameSettings + ' <div class="circle"> <i class="fa fa-umbrella"></i> </div> </div>');
         jok.append('<div id="PlayerButton"> <div class="circle player_circle"> <i class="glyphicon glyphicon-music main_icon"></i> </div> <span class="title"> ' + JP.ML.MusicPlayer + ' </span> <div id="MusicPlayer" class="jokfm_plugin"> <div> <span class="item previous_button"><i class="fa fa-backward"></i></span> <span class="item play_button"><i class="fa fa-play"></i></span> <span class="item stop_button"><i class="fa fa-stop"></i></span> <span class="item next_button"><i class="fa fa-forward"></i></span> </div> <div class="active_channel"></div> </div> </div>');
         jok.append('<div id="Authorization"> <img src="http://jok.io/content/images/portal/joklogo2.png" /> <br /> <br /> <ul class="social_connect"> <li class="click_navigate"> <a href="http://jok.io/portal/joinus/facebook?returnUrl=' + location.href + '"> <img src="http://jok.io/content/images/social/fb.png" /> ' + JP.ML.LoginWithFacebook + ' </a> </li> <li class="click_navigate"> <a href="http://jok.io/portal/joinus/twitter?returnUrl=' + location.href + '"> <img src="http://jok.io/content/images/social/twitter.png" /> ' + JP.ML.LoginWithTwitter + ' </a> </li> <li class="click_navigate"> <a href="http://jok.io/portal/joinus/odnoklasniki?returnUrl=' + location.href + '"> <img src="http://jok.io/content/images/social/odno.png" /> ' + JP.ML.LoginWithOdno + ' </a> </li> <li class="click_navigate"> <a href="http://jok.io/portal/joinus/vkontaqte?returnUrl=' + location.href + '"> <img src="http://jok.io/content/images/social/vk.png" /> ' + JP.ML.LoginWithVK + ' </a> </li> <li class="click_navigate"> <a href="http://jok.io/portal/joinus/google?returnUrl=' + location.href + '"> <img src="http://jok.io/content/images/social/google.png" /> ' + JP.ML.LoginWithGoogle + ' </a> </li> </ul> </div>');
-        jok.append('<div id="Notifications"> <div class="item message"></div> </div>');
+        jok.append('<div id="Notifications"> <div class="item message"></div> <div class="item invite_friend">' + JP.ML.InviteFriend + '<br /><br /><div class="input-group"><input type="text" class="form-control" id="InviteFriendLinkInput" value="' + JP.Config.PlayUrl + '"><div class="input-group-btn"><button type="button" class="btn btn-default" data-clipboard-target="InviteFriendLinkInput">' + JP.ML.CopyLink + '</button></div></div></div> </div>');
         jok.append('<div id="SettingsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="SettingsModal" aria-hidden="true"> <div class="modal-dialog"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">' + JP.ML.CloseSettings + '</span></button> <h3 class="modal-title" id="SettingsModal"><i class="fa fa-umbrella"></i> ' + JP.ML.GameSettings + '</h3> </div> <div class="modal-body"> <button class="btn btn-default btn-block btn-lg disable_audio_effects"><i class="glyphicon glyphicon-volume-up" style="float:left;"></i> ' + JP.ML.DisableAudioEffects + '</button> <button class="btn btn-default btn-block btn-lg enable_audio_effects"><i class="glyphicon glyphicon-volume-off" style="float:left;"></i> ' + JP.ML.EnableAudioEffects + '</button> <button class="btn btn-default btn-block btn-lg clear_chat"><i class="fa fa-comment-o" style="float:left;"></i> ' + JP.ML.ClearChat + '</button> </div> </div> </div> </div>');
         jok.append('<div id="RightPanel"> <div class="chat_messages"> <div class="bubles_container"> </div> </div> <div class="chat_input"> <input id="ChatMessageInput" type="text" placeholder="' + JP.ML.ChatInputPlaceholder + '" disabled maxlength="100" /> </div> </div>');
         jok.append('<div id="SmilesBoxModal" class="modal " tabindex="-1" role="dialog" aria-labelledby="SmilesBoxModal" aria-hidden="true"> <div class="modal-dialog"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">' + JP.ML.CloseEmotions + '</span></button> <h3 class="modal-title"><i class="fa fa-smile-o"></i> ' + JP.ML.SendEmotions + '</h3> </div> <div class="modal-body"> <div class="smiles_container"> </div> <div class="headline vip"> <span>' + JP.ML.VIPEmotions + '</span> </div> <div class="vip_smiles_container disabled"> </div> </div> </div> </div> </div>');
@@ -77,6 +78,9 @@ JP.UI = {
     },
 
     Load: function () {
+
+        JP.Config.Init();
+
 
         this.InitDom();
 
@@ -132,7 +136,7 @@ JP.UI = {
             return false;
         });
 
-        $(document).on('click', '#SmilesBoxModal div:not(.disabled) .item', function () {
+        $(document).on('click', '#SmilesBoxModal .smiles_container .item, #SmilesBoxModal .vip_smiles_container:not(.disabled) .item', function () {
             $('#SmilesBoxModal').modal('hide');
 
             var text = $(this).attr('data-name');
@@ -200,12 +204,35 @@ JP.UI = {
             JP.API('/User/SendFriendRequest/' + userid);
         });
 
+        $(document).on('click', '#Notifications .item.invite_friend input', function () {
+            $(this).select();
+        });
+
+        $(document).on('keydown', '#Notifications .item.invite_friend input', function () {
+            return false;
+        });
+
 
         $(document).on('keydown', '#ChatMessageInput', this.OnChatMessageInputKeyDown.bind(this));
         $(document).on('keydown', this.OnKeyDown.bind(this));
 
 
-        JP.Config.Init();
+
+        // Clipboard stuff
+        var client = new ZeroClipboard($('#Notifications .item.invite_friend button.btn')[0]);
+        client.on('aftercopy', function () {
+            //$('#Notifications .item.invite_friend button.btn').addClass('btn-success');
+            $('#Notifications .item.invite_friend button.btn').html('<i class="fa fa-check"></i>');
+
+            setTimeout(function () {
+                //$('#Notifications .item.invite_friend button.btn').removeClass('btn-success');
+                $('#Notifications .item.invite_friend button.btn').html(JP.ML.CopyLink);
+            }, 5000);
+        });
+
+
+
+
         JP.Audio.Init();
 
 
@@ -295,6 +322,17 @@ JP.UI = {
     AddChatMessage: function (userid, nick, msg) {
 
         if (!msg) return;
+        if (userid == JP.CurrentUser.UserID) {
+
+            //თუ ერთიდაიგივე მესიჯს აგზავნის ბოლო სამი წამის განმავლობაში, ვიკიდებთ.
+            if (JP.Chat.lastMessageTime
+                && (Date.now() - JP.Chat.lastMessageTime) < 3000
+                && JP.Chat.lastMessage == msg) return;
+
+
+            JP.Chat.lastMessageTime = Date.now();
+            JP.Chat.lastMessage = msg;
+        }
 
         msg = msg.replace(/(<([^>]+)>)/ig, ""); // Remove html tags
         msg = JP.Chat.ReplaceSmiles(msg);      // Convert images

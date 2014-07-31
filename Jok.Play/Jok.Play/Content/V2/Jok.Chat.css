@@ -77,6 +77,8 @@
 #RightPanel .chat_messages .buble div {
     margin-top: 3px;
     margin-left: 8px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 #RightPanel .chat_input {

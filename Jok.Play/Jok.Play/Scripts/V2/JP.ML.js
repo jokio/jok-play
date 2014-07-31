@@ -1,7 +1,7 @@
 ﻿
 JP.ML = {
 
-    Init: function(lang) {
+    Init: function (lang) {
         if (!JP.ML[lang]) return;
 
         for (var i in JP.ML[lang]) {
@@ -34,8 +34,10 @@ JP.ML = {
         CloseProfile: 'Close',
         RealtionStatusYou: 'It\'s You',
         RealtionStatusFriend: 'Your Friend',
-        RealtionStatusFriendRequestSent: 'Friend request sent...',
-        RealtionStatusStranger: 'Send friend request'
+        RealtionStatusFriendRequestSent: 'Friend request is sent...',
+        RealtionStatusStranger: 'Send friend request',
+        InviteFriend: 'Invite friends using this link & play with them:',
+        CopyLink: 'Copy',
     },
     ge: {
         Exit: 'გამოსვლა',
@@ -60,31 +62,35 @@ JP.ML = {
         RealtionStatusYou: 'თქვენ',
         RealtionStatusFriend: 'თქვენი მეგობარი',
         RealtionStatusFriendRequestSent: 'მეგობრობის თხოვნა გაგზავნილია...',
-        RealtionStatusStranger: 'მეგობრობის შეთავაზება'
+        RealtionStatusStranger: 'მეგობრობის შეთავაზება',
+        InviteFriend: 'გაუზიარე მეგობრებს ეს ლინკი და ეთამაშე მათ:',
+        CopyLink: 'კოპირება',
     },
     ru: {
-        Exit: 'Exit',
-        Chat: 'Chat',
-        GameSettings: 'Game Settings',
-        MusicPlayer: 'Music Player',
-        LoginWithFacebook: 'Login using Facebook',
-        LoginWithTwitter: 'Login using Twitter',
-        LoginWithOdno: 'Login using Однокласники',
-        LoginWithVK: 'Login using Вконтакте',
-        LoginWithGoogle: 'Login using Google',
-        CloseSettings: 'Close',
-        DisableAudioEffects: 'Disable Audio Effects',
-        EnableAudioEffects: 'Enable Audio Effects',
-        ClearChat: 'Clear Chat',
-        ChatInputPlaceholder: 'Press enter & type message',
-        ChatInputPlaceholderDisabled: 'Only emotions allowed',
-        SendEmotions: 'Send Emotions',
-        CloseEmotions: 'Close',
-        VIPEmotions: 'VIP Emotions',
-        CloseProfile: 'Close',
-        RealtionStatusYou: 'It\'s You',
-        RealtionStatusFriend: 'Your Friend',
-        RealtionStatusFriendRequestSent: 'Friend request sent...',
-        RealtionStatusStranger: 'Send friend request'
+        Exit: 'Выход',
+        Chat: 'Чат',
+        GameSettings: 'Настройки игры',
+        MusicPlayer: 'Музыкальный плеер',
+        LoginWithFacebook: 'Войти с помощью Facebook',
+        LoginWithTwitter: 'Войти с помощью Twitter',
+        LoginWithOdno: 'Войти с помощью Однокласники',
+        LoginWithVK: 'Войти с помощью Вконтакте',
+        LoginWithGoogle: 'Войти с помощью Google',
+        CloseSettings: 'Закрыть',
+        DisableAudioEffects: 'Отключить звуковые эффекты',
+        EnableAudioEffects: 'Включить звуковые эффекты',
+        ClearChat: 'Очистить чат',
+        ChatInputPlaceholder: 'Нажмите enter & введите сообщение',
+        ChatInputPlaceholderDisabled: 'Только эмоции разрешено',
+        SendEmotions: 'Отправить Эмоции',
+        CloseEmotions: 'Закрыть',
+        VIPEmotions: 'VIP Эмоции',
+        CloseProfile: 'Закрыть',
+        RealtionStatusYou: 'Это Вы',
+        RealtionStatusFriend: 'Ваш друг',
+        RealtionStatusFriendRequestSent: 'Друг просьба отправлена ...',
+        RealtionStatusStranger: 'Отправить запрос о дружбе',
+        InviteFriend: 'Пригласить друзей по этой ссылке и играть с ними:',
+        CopyLink: 'Копировать',
     },
 }

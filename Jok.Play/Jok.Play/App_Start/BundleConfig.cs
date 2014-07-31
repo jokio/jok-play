@@ -86,22 +86,24 @@ namespace Jok.Play
 
             // V2
             bundles.Add(new ScriptBundle("~/js/v2").Include(
-                        "~/scripts/jquery-{version}.js",
-                        "~/scripts/jquery.cookie.js",
-                        "~/scripts/EventEmitter.js",
-                        "~/scripts/bootstrap.js",
+                        "~/scripts/V2/jquery-{version}.js",
+                        "~/scripts/V2/jquery.cookie.js",
+                        "~/scripts/V2/EventEmitter.js",
+                        "~/scripts/V2/bootstrap.js",
                         "~/Scripts/V2/JP.js",
                         "~/Scripts/V2/JP.ML.js",
                         "~/Scripts/V2/JP.Chat.js",
                         "~/Scripts/V2/JP.Audio.js",
                         "~/scripts/V2/FM/mediaelement.js",
                         "~/scripts/V2/FM/jok.audio.js",
-                        "~/scripts/V2/FM/plugin.js"
+                        "~/scripts/V2/FM/plugin.js",
+                        "~/scripts/V2/FastClick.js",
+                        "~/scripts/V2/ZeroClipboard.js"
             ));
             
             bundles.Add(new StyleBundle("~/css/v2").Include(
-                        "~/Content/font-awesome.css",
-                        "~/Content/bootstrap.css",
+                        "~/Content/V2/font-awesome.css",
+                        "~/Content/V2/bootstrap.css",
                         "~/Content/V2/bootstrap.overrides.css",
                         "~/Content/V2/Jok.css",
                         "~/Content/V2/Jok.Player.css",

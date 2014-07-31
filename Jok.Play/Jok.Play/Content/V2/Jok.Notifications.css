@@ -2,7 +2,7 @@
     top: 50%;
     position: absolute;
     width: 300px;
-    margin-top: -40px;
+    margin-top: -80px;
     margin-left: -150px;
     left: 50%;
     z-index: 10;
@@ -34,6 +34,15 @@
 
 #Notifications .added_ratings.fail {
     color: #EE9E9E;
+}
+
+#Notifications .item.invite_friend{
+
+}
+
+#Notifications .item.invite_friend input{
+    text-align: center;
+    color: gray;
 }
 
 /*@media screen and (min-width:1250px) {
