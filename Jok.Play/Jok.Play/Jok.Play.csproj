@@ -376,6 +376,7 @@
     <Content Include="Scripts\V2\FM\mediaelement.js" />
     <Content Include="Scripts\V2\FM\plugin.js" />
     <Content Include="Scripts\V2\JP.js" />
+    <Content Include="Scripts\V2\JP.ML.js" />
     <Content Include="Views\Home\DemoV1.cshtml" />
     <Content Include="Views\Home\Github.cshtml" />
     <Content Include="Scripts\V2\JP.Chat.js" />

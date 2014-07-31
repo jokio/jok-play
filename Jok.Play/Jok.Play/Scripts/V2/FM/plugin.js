@@ -190,218 +190,184 @@ var MusicChannels = {
     loaded: undefined
 };
 
-$(function () {
+JP.FM = {
+    Init: function () {
 
-    var clickEvent = 'click';
+        var clickEvent = 'click';
 
-    var activeChannels = [];
+        var activeChannels = [];
 
-    var channel = $.cookie('channel');
-    var volume = $.cookie('volume') || 40;
-    var activeItemID = 0;
-    var isMusicPlaying = $.cookie('isMusicPlaying') && $.cookie('sid');
-
-
-    $(document).on(clickEvent, '.jokfm_plugin .active_channel', function () {
-        //window.open('http://jok.fm/?source=ez')
-    })
-
-    $(document).on(clickEvent, '.jokfm_plugin .play_button', function () {
-        $.radio.play();
-    })
-
-    $(document).on(clickEvent, '.jokfm_plugin .stop_button', function () {
-        $.radio.stop();
-
-        $('#favorites_list ._play.playing').attr('class', '_play');
-        $('#normal_list ._play.playing').attr('class', '_play');
-
-        return false; // აუცილებელია
-    })
-
-    $(document).on(clickEvent, '.jokfm_plugin .next_button', function () {
-        $.radio.playNext();
-    })
-
-    $(document).on(clickEvent, '.jokfm_plugin .previous_button', function () {
-        $.radio.playPrevious();
-    })
-
-    $(document).on(clickEvent, '.jokfm_plugin_volume > .logo', function () {
-        $.radio.toggleMute();
-    })
+        var channel = $.cookie('channel');
+        var volume = $.cookie('volume') || 40;
+        var activeItemID = 0;
+        var isMusicPlaying = $.cookie('isMusicPlaying') && $.cookie('sid');
 
 
-    $(document).on(clickEvent, '.stop_music_button', function (e) {
+        $(document).on(clickEvent, '.jokfm_plugin .active_channel', function () {
+            //window.open('http://jok.fm/?source=ez')
+        })
 
-        $.radio.stop();
+        $(document).on(clickEvent, '.jokfm_plugin .play_button', function () {
+            $.radio.play();
+        })
 
-        e.stopPropagation();
-    });
+        $(document).on(clickEvent, '.jokfm_plugin .stop_button', function () {
+            $.radio.stop();
 
-    $(document).on(clickEvent, '#favorites_list .item ._star', function (e) {
-        var id = $(this).parent().parent().attr('data-channelid');
-        changeStarState(id);
+            $('#favorites_list ._play.playing').attr('class', '_play');
+            $('#normal_list ._play.playing').attr('class', '_play');
 
-        e.stopPropagation();
-    });
-    $(document).on('click touchend', '#normal_list .item ._star', function (e) {
-        var id = $(this).parent().parent().attr('data-channelid');
-        changeStarState(id);
+            return false; // აუცილებელია
+        })
 
-        e.stopPropagation();
-    });
-    $(document).on('click touchend', '#favorites_list .item', function (e) {
-        if (e.isPropagationStopped()) return;
+        $(document).on(clickEvent, '.jokfm_plugin .next_button', function () {
+            $.radio.playNext();
+        })
 
-        var id = $(this).attr('data-channelid');
-        MusicChannelPlay(id);
-    });
-    $(document).on('click touchend', '#normal_list .item', function (e) {
-        if (e.isPropagationStopped()) return;
-
-        var id = $(this).attr('data-channelid');
-        MusicChannelPlay(id);
-    });
+        $(document).on(clickEvent, '.jokfm_plugin .previous_button', function () {
+            $.radio.playPrevious();
+        })
 
 
-    function changeStarState(id) {
-        var isFavorited = false;
-        var items_container = $('#favorites_list');
-        var items_container2 = $('#normal_list');
 
-        var oldItem = items_container.find('div.item[data-channelid=' + id + ']');
+        function changeStarState(id) {
+            var isFavorited = false;
+            var items_container = $('#favorites_list');
+            var items_container2 = $('#normal_list');
 
-        if (oldItem.length == 0) {
-            items_container = $('#normal_list');
-            items_container2 = $('#favorites_list');
-            oldItem = items_container.find('div.item[data-channelid=' + id + ']');
-            isFavorited = true;
-        }
+            var oldItem = items_container.find('div.item[data-channelid=' + id + ']');
 
-        if (oldItem.length > 0) {
-            oldItem.hide(0, function () {
-                oldItem.remove();
-
-                items_container2.prepend(oldItem);
-                oldItem.show('fast');
-            });
-
-            $.get('http://api.jok.ge/musicchannel/' + id + (isFavorited ? '/favorite' : '/unfavorite') + '?sid=' + $.cookie('sid'));
-        }
-
-
-        for (var i = 0; i < MusicChannels.activeChannels.length; i++) {
-            if (MusicChannels.activeChannels[i].ID == id) {
-                MusicChannels.activeChannels[i].IsFavorite = isFavorited;
-                break;
-            }
-        }
-    }
-
-    function MusicChannelPlay(id) {
-        for (var i = 0; i < $.radio._activeChannels.length; i++) {
-            var item = $.radio._activeChannels[i];
-
-            if (id == item.channelid) {
-                $.radio.play(i);
-                break;
-            }
-        }
-    }
-
-
-    $.get('http://api.jok.io/music/channels/?sid=' + $.cookie('sid'), function (data) {
-        var list = (typeof data == "string") ? JSON.parse(data) : data;
-        if (!list.IsSuccess) return;
-
-        list = list.Data;
-
-        MusicChannels.activeChannels = list;
-
-        for (var i = 0; i < list.length; i++) {
-
-            if (list[i].Name == channel) {
-                activeItemID = i;
+            if (oldItem.length == 0) {
+                items_container = $('#normal_list');
+                items_container2 = $('#favorites_list');
+                oldItem = items_container.find('div.item[data-channelid=' + id + ']');
+                isFavorited = true;
             }
 
-            activeChannels.push({
-                id: i,
-                channelid: list[i].ID,
-                channel: list[i].Name,
-                source: list[i].Source,
-            });
-        };
+            if (oldItem.length > 0) {
+                oldItem.hide(0, function () {
+                    oldItem.remove();
 
-        $.radio = new RadioPlugin(
-            $('.jokfm_plugin .active_channel'),
-            $('.jokfm_plugin .play_button'),
-            $('.jokfm_plugin .stop_button'),
-            $('.jokfm_plugin_volume > .logo'),
-            $('.jokfm_plugin_volume .volume-selector'),
-            volume,
-            isMusicPlaying,
-            activeItemID,
-            activeChannels
-        );
+                    items_container2.prepend(oldItem);
+                    oldItem.show('fast');
+                });
 
-        //$('.jokfm_plugin').show();
-        //$('.jokfm_plugin_volume').show();
+                $.get('http://api.jok.ge/musicchannel/' + id + (isFavorited ? '/favorite' : '/unfavorite') + '?sid=' + $.cookie('sid'));
+            }
 
-        if (MusicChannels.loaded)
-            MusicChannels.loaded(list);
-
-
-        $.radio.updateTrackInfo = function (channelID, trackInfo) {
-            var id = channelID;
-
-            var item = $('#favorites_list div.item[data-channelid=' + channelID + ']');
-            if (item.length == 0)
-                item = $('#normal_list div.item[data-channelid=' + channelID + ']');
-
-            if (item.length == 0) return;
-
-            var oldTrack = item.find('._track').html();
-            if (oldTrack == trackInfo) return;
-
-            item.find('._track').html(trackInfo);
-
-            item.css('background-color', 'rgba(204, 247, 190, 0.9)');
-            item.animate({ backgroundColor: 'rgb(246, 247, 245)' }, 1000);
 
             for (var i = 0; i < MusicChannels.activeChannels.length; i++) {
-                if (MusicChannels.activeChannels[i].ID == channelID) {
-                    MusicChannels.activeChannels[i].TrackInfo = trackInfo;
+                if (MusicChannels.activeChannels[i].ID == id) {
+                    MusicChannels.activeChannels[i].IsFavorite = isFavorited;
                     break;
                 }
             }
-
         }
 
-        //setInterval(function () {
-        //    $.get('http://api.jok.ge/musicchannel/0/getall?sid=' + $.cookie('sid'), function (_data) {
-        //        var items = (typeof _data == "string") ? JSON.parse(_data) : _data;
+        function MusicChannelPlay(id) {
+            for (var i = 0; i < $.radio._activeChannels.length; i++) {
+                var item = $.radio._activeChannels[i];
 
-        //        for (var i = 0; i < items.length; i++) {
-        //            var id = items[i].ID;
+                if (id == item.channelid) {
+                    $.radio.play(i);
+                    break;
+                }
+            }
+        }
 
-        //            var item = $('#favorites_list div.item[data-channelid=' + items[i].ID + ']');
-        //            if (item.length == 0)
-        //                item = $('#normal_list div.item[data-channelid=' + items[i].ID + ']');
 
-        //            if (item.length == 0) continue;
+        $.get('http://api.jok.io/music/channels/?sid=' + $.cookie('sid'), function (data) {
+            var list = (typeof data == "string") ? JSON.parse(data) : data;
+            if (!list.IsSuccess) return;
 
-        //            var oldTrack = item.find('._track').html();
-        //            if (oldTrack == items[i].TrackInfo) continue;
+            list = list.Data;
 
-        //            item.find('._track').html(items[i].TrackInfo);
+            MusicChannels.activeChannels = list;
 
-        //            item.css('background-color', 'rgba(204, 247, 190, 0.9)');
-        //            item.animate({ backgroundColor: 'rgb(246, 247, 245)' }, 1000);
-        //        }
-        //    });
-        //}, 20 * 1000);
-    })
-})
+            for (var i = 0; i < list.length; i++) {
+
+                if (list[i].Name == channel) {
+                    activeItemID = i;
+                }
+
+                activeChannels.push({
+                    id: i,
+                    channelid: list[i].ID,
+                    channel: list[i].Name,
+                    source: list[i].Source,
+                });
+            };
+
+            $.radio = new RadioPlugin(
+                $('.jokfm_plugin .active_channel'),
+                $('.jokfm_plugin .play_button'),
+                $('.jokfm_plugin .stop_button'),
+                $('.jokfm_plugin_volume > .logo'),
+                $('.jokfm_plugin_volume .volume-selector'),
+                volume,
+                isMusicPlaying,
+                activeItemID,
+                activeChannels
+            );
+
+            //$('.jokfm_plugin').show();
+            //$('.jokfm_plugin_volume').show();
+
+            if (MusicChannels.loaded)
+                MusicChannels.loaded(list);
+
+
+            $.radio.updateTrackInfo = function (channelID, trackInfo) {
+                var id = channelID;
+
+                var item = $('#favorites_list div.item[data-channelid=' + channelID + ']');
+                if (item.length == 0)
+                    item = $('#normal_list div.item[data-channelid=' + channelID + ']');
+
+                if (item.length == 0) return;
+
+                var oldTrack = item.find('._track').html();
+                if (oldTrack == trackInfo) return;
+
+                item.find('._track').html(trackInfo);
+
+                item.css('background-color', 'rgba(204, 247, 190, 0.9)');
+                item.animate({ backgroundColor: 'rgb(246, 247, 245)' }, 1000);
+
+                for (var i = 0; i < MusicChannels.activeChannels.length; i++) {
+                    if (MusicChannels.activeChannels[i].ID == channelID) {
+                        MusicChannels.activeChannels[i].TrackInfo = trackInfo;
+                        break;
+                    }
+                }
+
+            }
+
+            //setInterval(function () {
+            //    $.get('http://api.jok.ge/musicchannel/0/getall?sid=' + $.cookie('sid'), function (_data) {
+            //        var items = (typeof _data == "string") ? JSON.parse(_data) : _data;
+
+            //        for (var i = 0; i < items.length; i++) {
+            //            var id = items[i].ID;
+
+            //            var item = $('#favorites_list div.item[data-channelid=' + items[i].ID + ']');
+            //            if (item.length == 0)
+            //                item = $('#normal_list div.item[data-channelid=' + items[i].ID + ']');
+
+            //            if (item.length == 0) continue;
+
+            //            var oldTrack = item.find('._track').html();
+            //            if (oldTrack == items[i].TrackInfo) continue;
+
+            //            item.find('._track').html(items[i].TrackInfo);
+
+            //            item.css('background-color', 'rgba(204, 247, 190, 0.9)');
+            //            item.animate({ backgroundColor: 'rgb(246, 247, 245)' }, 1000);
+            //        }
+            //    });
+            //}, 20 * 1000);
+        })
+    }
+}
 
 
