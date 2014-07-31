@@ -4,7 +4,7 @@
 
 JP.CurrentUser = {
     //UserID: 32,
-    //IsVIPMember: true,
+    //IsVIP: true,
     //Nick: 'PlayerX',
     //LangID: 2
 }
@@ -219,13 +219,16 @@ JP.UI = {
 
 
         // Clipboard stuff
+        ZeroClipboard.config({
+            trustedDomains: ["*"],
+            swfPath: JP.Config.JPUrl + 'Scripts/V2/ZeroClipboard.swf'
+        });
+
         var client = new ZeroClipboard($('#Notifications .item.invite_friend button.btn')[0]);
         client.on('aftercopy', function () {
-            //$('#Notifications .item.invite_friend button.btn').addClass('btn-success');
             $('#Notifications .item.invite_friend button.btn').html('<i class="fa fa-check"></i>');
 
             setTimeout(function () {
-                //$('#Notifications .item.invite_friend button.btn').removeClass('btn-success');
                 $('#Notifications .item.invite_friend button.btn').html(JP.ML.CopyLink);
             }, 5000);
         });
@@ -624,11 +627,11 @@ JP.UI = {
 
 JP.Config = {
 
-    ApiUrl: 'https://api.jok.io/',
+    ApiUrl: '//api.jok.io/',
 
-    ExitUrl: 'http://jok.ge',
+    ExitUrl: '//jok.ge',
 
-    AudiosUrl: 'https://play.jok.io/Content/Audios/',
+    JPUrl: '//play.jok.io/',
 
     PlayUrl: '',
 

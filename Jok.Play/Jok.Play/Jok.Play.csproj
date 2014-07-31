@@ -396,7 +396,6 @@
     <Content Include="Scripts\V2\EventEmitter.js" />
     <Content Include="Scripts\V2\FastClick.js" />
     <Content Include="Scripts\V2\FM\flashmediaelement.swf" />
-    <Content Include="Scripts\V2\FM\jok.audio.js" />
     <Content Include="Scripts\V2\FM\mediaelement.js" />
     <Content Include="Scripts\V2\FM\plugin.js" />
     <Content Include="Scripts\V2\JP.Audio.js" />

@@ -6,7 +6,7 @@ JP.Audio = {
 
     Init: function () {
 
-        var root = JP.Config.AudiosUrl;
+        var root = JP.Config.JPUrl + 'Content/Audios/';
 
         this.Register({
             Name: 'PlayerLogin',
