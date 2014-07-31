@@ -7,6 +7,8 @@ JP.ML = {
         for (var i in JP.ML[lang]) {
             JP.ML[i] = JP.ML[lang][i];
         }
+
+        JP.emit('TextsInitialized', lang);
     },
 
 

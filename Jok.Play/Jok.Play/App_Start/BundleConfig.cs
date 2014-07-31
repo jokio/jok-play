@@ -93,6 +93,7 @@ namespace Jok.Play
                         "~/Scripts/V2/JP.js",
                         "~/Scripts/V2/JP.ML.js",
                         "~/Scripts/V2/JP.Chat.js",
+                        "~/Scripts/V2/JP.Audio.js",
                         "~/scripts/V2/FM/mediaelement.js",
                         "~/scripts/V2/FM/jok.audio.js",
                         "~/scripts/V2/FM/plugin.js"

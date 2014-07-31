@@ -14,6 +14,16 @@
 
 			$(number <= 24 ? '#SmilesBoxModal .smiles_container' : '#SmilesBoxModal .vip_smiles_container').append(['<div class="item" data-name="', name, '" title="(', title, ')"><span class="emotion ', name, '" /></div>'].join(''));
 		}
+
+		if (JP.Config.Channel) {
+		    $('#ChatMessageInput').removeAttr('disabled');
+		    $('#ChatMessageInput').attr('placeholder', JP.ML.ChatInputPlaceholder);
+		} else {
+		    $('#ChatMessageInput').attr('disabled', 'disabled');
+		    $('#ChatMessageInput').attr('placeholder', JP.ML.ChatInputPlaceholderDisabled);
+		}
+
+		$('#ChatButton').show();
 	},
 
 	ReplaceSmiles: function (msg) {

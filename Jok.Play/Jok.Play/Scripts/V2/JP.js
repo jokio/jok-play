@@ -17,6 +17,13 @@ JP.UI = {
 
     Init: function () {
 
+        $('body').hide();
+        $('body').fadeTo(0, 0);
+
+        var sid = JP.Config.GetQueryVariable('sid');
+        if (sid)
+            $.cookie('sid', sid, { expire: 1200 });
+
         JP.API('/User/InfoBySID?sid=' + $.cookie('sid'), function (user) {
 
             if (!user || !user.IsSuccess) {
@@ -59,7 +66,7 @@ JP.UI = {
         jok.append('<div id="ChatButton"> ' + JP.ML.Chat + ' <div class="circle"> <i class="fa fa-comment-o"></i> </div> </div>');
         jok.append('<div id="ConfigButton" data-toggle="modal" data-target="#SettingsModal"> ' + JP.ML.GameSettings + ' <div class="circle"> <i class="fa fa-umbrella"></i> </div> </div>');
         jok.append('<div id="PlayerButton"> <div class="circle player_circle"> <i class="glyphicon glyphicon-music main_icon"></i> </div> <span class="title"> ' + JP.ML.MusicPlayer + ' </span> <div id="MusicPlayer" class="jokfm_plugin"> <div> <span class="item previous_button"><i class="fa fa-backward"></i></span> <span class="item play_button"><i class="fa fa-play"></i></span> <span class="item stop_button"><i class="fa fa-stop"></i></span> <span class="item next_button"><i class="fa fa-forward"></i></span> </div> <div class="active_channel"></div> </div> </div>');
-        jok.append('<div id="Authorization"> <img src="http://jok.io/content/images/portal/joklogo2.png" /> <br /> <br /> <ul class="social_connect"> <li class="click_navigate"> <a href="http://jok.io/portal/joinus/facebook?returnUrl=@Request.Url"> <img src="http://jok.io/content/images/social/fb.png" /> ' + JP.ML.LoginWithFacebook + ' </a> </li> <li class="click_navigate"> <a href="http://jok.io/portal/joinus/twitter?returnUrl=@Request.Url"> <img src="http://jok.io/content/images/social/twitter.png" /> ' + JP.ML.LoginWithTwitter + ' </a> </li> <li class="click_navigate"> <a href="http://jok.io/portal/joinus/odnoklasniki?returnUrl=@Request.Url"> <img src="http://jok.io/content/images/social/odno.png" /> ' + JP.ML.LoginWithOdno + ' </a> </li> <li class="click_navigate"> <a href="http://jok.io/portal/joinus/vkontaqte?returnUrl=@Request.Url"> <img src="http://jok.io/content/images/social/vk.png" /> ' + JP.ML.LoginWithVK + ' </a> </li> <li class="click_navigate"> <a href="http://jok.io/portal/joinus/google?returnUrl=@Request.Url"> <img src="http://jok.io/content/images/social/google.png" /> ' + JP.ML.LoginWithGoogle + ' </a> </li> </ul> </div>');
+        jok.append('<div id="Authorization"> <img src="http://jok.io/content/images/portal/joklogo2.png" /> <br /> <br /> <ul class="social_connect"> <li class="click_navigate"> <a href="http://jok.io/portal/joinus/facebook?returnUrl=' + location.href + '"> <img src="http://jok.io/content/images/social/fb.png" /> ' + JP.ML.LoginWithFacebook + ' </a> </li> <li class="click_navigate"> <a href="http://jok.io/portal/joinus/twitter?returnUrl=' + location.href + '"> <img src="http://jok.io/content/images/social/twitter.png" /> ' + JP.ML.LoginWithTwitter + ' </a> </li> <li class="click_navigate"> <a href="http://jok.io/portal/joinus/odnoklasniki?returnUrl=' + location.href + '"> <img src="http://jok.io/content/images/social/odno.png" /> ' + JP.ML.LoginWithOdno + ' </a> </li> <li class="click_navigate"> <a href="http://jok.io/portal/joinus/vkontaqte?returnUrl=' + location.href + '"> <img src="http://jok.io/content/images/social/vk.png" /> ' + JP.ML.LoginWithVK + ' </a> </li> <li class="click_navigate"> <a href="http://jok.io/portal/joinus/google?returnUrl=' + location.href + '"> <img src="http://jok.io/content/images/social/google.png" /> ' + JP.ML.LoginWithGoogle + ' </a> </li> </ul> </div>');
         jok.append('<div id="Notifications"> <div class="item message"></div> </div>');
         jok.append('<div id="SettingsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="SettingsModal" aria-hidden="true"> <div class="modal-dialog"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">' + JP.ML.CloseSettings + '</span></button> <h3 class="modal-title" id="SettingsModal"><i class="fa fa-umbrella"></i> ' + JP.ML.GameSettings + '</h3> </div> <div class="modal-body"> <button class="btn btn-default btn-block btn-lg disable_audio_effects"><i class="glyphicon glyphicon-volume-up" style="float:left;"></i> ' + JP.ML.DisableAudioEffects + '</button> <button class="btn btn-default btn-block btn-lg enable_audio_effects"><i class="glyphicon glyphicon-volume-off" style="float:left;"></i> ' + JP.ML.EnableAudioEffects + '</button> <button class="btn btn-default btn-block btn-lg clear_chat"><i class="fa fa-comment-o" style="float:left;"></i> ' + JP.ML.ClearChat + '</button> </div> </div> </div> </div>');
         jok.append('<div id="RightPanel"> <div class="chat_messages"> <div class="bubles_container"> </div> </div> <div class="chat_input"> <input id="ChatMessageInput" type="text" placeholder="' + JP.ML.ChatInputPlaceholder + '" disabled maxlength="100" /> </div> </div>');
@@ -73,6 +80,10 @@ JP.UI = {
 
         this.InitDom();
 
+        $(document).on('click', '#ExitButton', function () {
+
+            document.location.assign(JP.Config.ExitUrl);
+        });
 
         $(document).on('click', '#ChatButton', function () {
 
@@ -115,7 +126,9 @@ JP.UI = {
         });
 
         $(document).on('contextmenu', function () {
-            $('#SmilesBoxModal').modal();
+
+            if (JP.CurrentUser.UserID)
+                $('#SmilesBoxModal').modal();
             return false;
         });
 
@@ -191,18 +204,31 @@ JP.UI = {
         $(document).on('keydown', '#ChatMessageInput', this.OnChatMessageInputKeyDown.bind(this));
         $(document).on('keydown', this.OnKeyDown.bind(this));
 
+
         JP.Config.Init();
-        JP.Chat.Init();
-        JP.FM.Init();
+        JP.Audio.Init();
 
-        this.InitChatAds();
 
-        JP.emit('Ready');
+        if (JP.CurrentUser.UserID) {
+            JP.Config.Load();
+            JP.Chat.Init();
+            JP.FM.Init();
+
+            this.InitChatAds();
+
+            JP.emit('Ready');
+        }
+
+        $('body').show();
+        $('body').fadeTo(300, 1);
     },
 
     OnKeyDown: function (e) {
 
         if (e.keyCode == 13 /*Enter*/) {
+
+            if (!JP.CurrentUser.UserID)
+                return;
 
             if (!JP.Config.RightPanelIsOpen)
                 this.ToggleRightPanel();
@@ -211,6 +237,9 @@ JP.UI = {
         }
 
         if (e.keyCode == 27/*Esc*/) {
+
+            if (!JP.CurrentUser.UserID)
+                return;
 
             if (JP.Config.RightPanelIsOpen)
                 this.ToggleRightPanel();
@@ -236,6 +265,13 @@ JP.UI = {
 
         JP.Config.RightPanelIsOpen = $('#Jok').hasClass('panel_open');
         JP.Config.Save();
+
+        if (!JP.Config.RightPanelIsOpen)
+            $('#RightPanel').css('z-index', -1);
+
+        setTimeout(function () {
+            $('#RightPanel').css('z-index', JP.Config.RightPanelIsOpen ? 1000 : -1);
+        }, 300);
     },
 
     InitChatAds: function () {
@@ -316,6 +352,15 @@ JP.UI = {
         });
     },
 
+    ClearPlayer: function (selector) {
+        var el = $(selector);
+        if (!el.length) return;
+
+        el.empty();
+        el.removeAttr('class');
+        el.removeAttr('data-userid');
+    },
+
     GetPlayer: function (userid, cb) {
 
         var cachedPlayer = JP.Players[userid];
@@ -324,7 +369,7 @@ JP.UI = {
             return;
         }
 
-        JP.API('user/info/' + userid + '?gameid=12&languageID=' + JP.CurrentUser.LanguageID + '&sid=' + $.cookie('sid'), function (result) {
+        JP.API('user/info/' + userid + '?gameid=' + JP.Config.GameID + '&languageID=' + JP.CurrentUser.LanguageID + '&sid=' + $.cookie('sid'), function (result) {
             if (!result.IsSuccess) {
                 if (cb) cb(null);
                 return;
@@ -404,10 +449,13 @@ JP.UI = {
         bitting.css('right', 0);
 
         bitting.stop(true);
-        bitting.animate({ right: bitting.width() }, durationInSec * 1000, 'swing', function () {
-            bitting.css('right', 0);
-            user.removeClass('active');
-        });
+
+        if (durationInSec) {
+            bitting.animate({ right: bitting.width() }, durationInSec * 1000, 'swing', function () {
+                bitting.css('right', 0);
+                user.removeClass('active');
+            });
+        }
     },
 
     UpdateUserListeningStatus: function (userid, isListening, channelID) {
@@ -444,6 +492,10 @@ JP.UI = {
 
         replaceCallback && replaceCallback(nItem);
         nItem.show();
+    },
+
+    HideNotification: function () {
+        $('#Notifications .item').hide();
     },
 
 
@@ -536,6 +588,14 @@ JP.Config = {
 
     ApiUrl: 'https://api.jok.io/',
 
+    ExitUrl: 'http://jok.ge',
+
+    PlayUrl: '',
+
+    GameID: 0,
+
+    Channel: '',
+
     AudioEffectsEnabled: true,
     PlayerIsActive: false,
     RightPanelIsOpen: false,
@@ -543,6 +603,18 @@ JP.Config = {
     Init: function () {
         this.AudioEffectsEnabled = localStorage['JP_AudioEffectsEnabled'] == 1;
         this.RightPanelIsOpen = localStorage['JP_RightPanelIsOpen'] == 1;
+
+        var exitUrl = this.GetQueryVariable('ExitUrl');
+        if (exitUrl)
+            this.ExitUrl = exitUrl;
+
+        if (!this.PlayUrl)
+            this.PlayUrl = location.origin + location.pathname;
+    },
+
+    Load: function () {
+
+        $('#ConfigButton').show();
 
         this.Refresh();
     },
@@ -575,6 +647,22 @@ JP.Config = {
         var lastIndex = host.lastIndexOf('.');
 
         return (firstIndex != lastIndex) ? host.substring(firstIndex) : (lastIndex > -1 ? '.' + host : '');
+    },
+
+    GetQueryVariable: function (variable) {
+        if (!variable) return;
+
+        var query = window.location.search.substring(1);
+        var vars = query.split('&');
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split('=');
+            var key = decodeURIComponent(pair[0]);
+            var value = decodeURIComponent(pair[1]);
+
+            if (key && value.length == 36 && key.toLowerCase() == variable.toLowerCase()) {
+                return value;
+            }
+        }
     }
 }
 
@@ -599,17 +687,10 @@ JP.API = function (action, cb) {
 }
 
 
-JP.Ready = function (callback) {
-    JP.on('Ready', function () {
-        try {
-            callback();
-        }
-        catch (err) {
-            console.error(err);
-        }
-    });
-}
+JP.Init = function (gameid, channel) {
 
-$(function () {
+    JP.Config.GameID = gameid;
+    JP.Config.Channel = channel;
+
     JP.UI.Init();
-});
+}

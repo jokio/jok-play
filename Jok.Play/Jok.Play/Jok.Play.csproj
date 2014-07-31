@@ -135,9 +135,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Audios\buzz.mp3" />
-    <Content Include="Content\Audios\challenge.mp3" />
-    <Content Include="Content\Audios\gamestart.mp3" />
+    <Content Include="Content\Audios\Buzz.mp3" />
+    <Content Include="Content\Audios\Challenge.mp3" />
+    <Content Include="Content\Audios\AnswerCorrect.mp3" />
+    <Content Include="Content\Audios\GameStart.mp3" />
+    <Content Include="Content\Audios\Loser.mp3" />
+    <Content Include="Content\Audios\PlayerLogin.mp3" />
+    <Content Include="Content\Audios\AnswerSelect.mp3" />
+    <Content Include="Content\Audios\Tick.mp3" />
+    <Content Include="Content\Audios\Victory.mp3" />
+    <Content Include="Content\Audios\Warning.mp3" />
+    <Content Include="Content\Audios\AnswerWrong.mp3" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -239,6 +247,17 @@
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="Content\V2\Jok.Chat.css" />
+    <Content Include="Content\Audios\PlayerLogin.ogg" />
+    <Content Include="Content\Audios\Warning.ogg" />
+    <Content Include="Content\Audios\AnswerCorrect.ogg" />
+    <Content Include="Content\Audios\AnswerSelect.ogg" />
+    <Content Include="Content\Audios\AnswerWrong.ogg" />
+    <Content Include="Content\Audios\Buzz.ogg" />
+    <Content Include="Content\Audios\Challenge.ogg" />
+    <Content Include="Content\Audios\GameStart.ogg" />
+    <Content Include="Content\Audios\Loser.ogg" />
+    <Content Include="Content\Audios\Tick.ogg" />
+    <Content Include="Content\Audios\Victory.ogg" />
     <None Include="Properties\PublishProfiles\Jok.Play.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Images\back-button-white.png" />
@@ -375,6 +394,7 @@
     <Content Include="Scripts\V2\FM\jok.audio.js" />
     <Content Include="Scripts\V2\FM\mediaelement.js" />
     <Content Include="Scripts\V2\FM\plugin.js" />
+    <Content Include="Scripts\V2\JP.Audio.js" />
     <Content Include="Scripts\V2\JP.js" />
     <Content Include="Scripts\V2\JP.ML.js" />
     <Content Include="Views\Home\DemoV1.cshtml" />

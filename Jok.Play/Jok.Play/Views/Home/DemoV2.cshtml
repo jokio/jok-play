@@ -85,6 +85,8 @@
         </div>
     </div>
     <script>
+        JP.Init(12, 'asd');
+
         JP.on('ChatMessageSend', function (msg) {
             console.log('Message sent', msg);
         });
@@ -102,7 +104,6 @@
                 item.html('Initialized!');
             })
         });
-
     </script>
 </body>
 </html>
