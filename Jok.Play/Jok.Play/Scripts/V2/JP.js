@@ -628,6 +628,8 @@ JP.Config = {
 
     ExitUrl: 'http://jok.ge',
 
+    AudiosUrl: 'https://play.jok.io/Content/Audios/',
+
     PlayUrl: '',
 
     GameID: 0,

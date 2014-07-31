@@ -6,93 +6,93 @@ JP.Audio = {
 
     Init: function () {
 
-        var root = 'http://localhost:55956'
+        var root = JP.Config.AudiosUrl;
 
         this.Register({
             Name: 'PlayerLogin',
             Sources: [
-                { Type: 'audio/mpeg', Src: root + '/Content/Audios/PlayerLogin.mp3' },
-                { Type: 'audio/ogg', Src: root + '/Content/Audios/PlayerLogin.ogg' },
+                { Type: 'audio/mpeg', Src: root + 'PlayerLogin.mp3' },
+                { Type: 'audio/ogg', Src: root + 'PlayerLogin.ogg' },
             ]
         });
 
         this.Register({
             Name: 'Warning',
             Sources: [
-                { Type: 'audio/mpeg', Src: root + '/Content/Audios/Warning.mp3' },
-                { Type: 'audio/ogg', Src: root + '/Content/Audios/Warning.ogg' },
+                { Type: 'audio/mpeg', Src: root + 'Warning.mp3' },
+                { Type: 'audio/ogg', Src: root + 'Warning.ogg' },
             ]
         });
 
         this.Register({
             Name: 'Loser',
             Sources: [
-                { Type: 'audio/mpeg', Src: root + '/Content/Audios/Loser.mp3' },
-                { Type: 'audio/ogg', Src: root + '/Content/Audios/Loser.ogg' },
+                { Type: 'audio/mpeg', Src: root + 'Loser.mp3' },
+                { Type: 'audio/ogg', Src: root + 'Loser.ogg' },
             ]
         });
 
         this.Register({
             Name: 'Tick',
             Sources: [
-                { Type: 'audio/mpeg', Src: root + '/Content/Audios/Tick.mp3' },
-                { Type: 'audio/ogg', Src: root + '/Content/Audios/Tick.ogg' },
+                { Type: 'audio/mpeg', Src: root + 'Tick.mp3' },
+                { Type: 'audio/ogg', Src: root + 'Tick.ogg' },
             ]
         });
 
         this.Register({
             Name: 'Victory',
             Sources: [
-                { Type: 'audio/mpeg', Src: root + '/Content/Audios/Victory.mp3' },
-                { Type: 'audio/ogg', Src: root + '/Content/Audios/Victory.ogg' },
+                { Type: 'audio/mpeg', Src: root + 'Victory.mp3' },
+                { Type: 'audio/ogg', Src: root + 'Victory.ogg' },
             ]
         });
 
         this.Register({
             Name: 'GameStart',
             Sources: [
-                { Type: 'audio/mpeg', Src: root + '/Content/Audios/GameStart.mp3' },
-                { Type: 'audio/ogg', Src: root + '/Content/Audios/GameStart.ogg' },
+                { Type: 'audio/mpeg', Src: root + 'GameStart.mp3' },
+                { Type: 'audio/ogg', Src: root + 'GameStart.ogg' },
             ]
         });
 
         this.Register({
             Name: 'Challenge',
             Sources: [
-                { Type: 'audio/mpeg', Src: root + '/Content/Audios/Challenge.mp3' },
-                { Type: 'audio/ogg', Src: root + '/Content/Audios/Challenge.ogg' },
+                { Type: 'audio/mpeg', Src: root + 'Challenge.mp3' },
+                { Type: 'audio/ogg', Src: root + 'Challenge.ogg' },
             ]
         });
 
         this.Register({
             Name: 'Buzz',
             Sources: [
-                { Type: 'audio/mpeg', Src: root + '/Content/Audios/Buzz.mp3' },
-                { Type: 'audio/ogg', Src: root + '/Content/Audios/Buzz.ogg' },
+                { Type: 'audio/mpeg', Src: root + 'Buzz.mp3' },
+                { Type: 'audio/ogg', Src: root + 'Buzz.ogg' },
             ]
         });
 
         this.Register({
             Name: 'AnswerSelect',
             Sources: [
-                { Type: 'audio/mpeg', Src: root + '/Content/Audios/AnswerSelect.mp3' },
-                { Type: 'audio/ogg', Src: root + '/Content/Audios/AnswerSelect.ogg' },
+                { Type: 'audio/mpeg', Src: root + 'AnswerSelect.mp3' },
+                { Type: 'audio/ogg', Src: root + 'AnswerSelect.ogg' },
             ]
         });
 
         this.Register({
             Name: 'AnswerWrong',
             Sources: [
-                { Type: 'audio/mpeg', Src: root + '/Content/Audios/AnswerWrong.mp3' },
-                { Type: 'audio/ogg', Src: root + '/Content/Audios/AnswerWrong.ogg' },
+                { Type: 'audio/mpeg', Src: root + 'AnswerWrong.mp3' },
+                { Type: 'audio/ogg', Src: root + 'AnswerWrong.ogg' },
             ]
         });
 
         this.Register({
             Name: 'AnswerCorrect',
             Sources: [
-                { Type: 'audio/mpeg', Src: root + '/Content/Audios/AnswerCorrect.mp3' },
-                { Type: 'audio/ogg', Src: root + '/Content/Audios/AnswerCorrect.ogg' },
+                { Type: 'audio/mpeg', Src: root + 'AnswerCorrect.mp3' },
+                { Type: 'audio/ogg', Src: root + 'AnswerCorrect.ogg' },
             ]
         });
     },
