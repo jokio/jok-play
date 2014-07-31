@@ -633,6 +633,8 @@ JP.Config = {
 
     JPUrl: '//play.jok.io/',
 
+    ServerUrl: '',
+
     PlayUrl: '',
 
     GameID: 0,
@@ -730,10 +732,11 @@ JP.API = function (action, cb) {
 }
 
 
-JP.Init = function (gameid, channel) {
+JP.Init = function (gameid, channel, serverUrl) {
 
     JP.Config.GameID = gameid;
     JP.Config.Channel = channel;
+    JP.Config.ServerUrl = serverUrl;
 
     JP.UI.Init();
 }
