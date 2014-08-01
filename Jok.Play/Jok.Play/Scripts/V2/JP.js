@@ -360,6 +360,11 @@ JP.UI = {
                 uiPlayer.addClass('jok_player');
             }
 
+
+
+            !uiPlayer.find('.music_speakers').length && uiPlayer.append('<img class="music_speakers" src="//play.jok.io/images/speakers2.png" />');
+            
+
             var avatar = uiPlayer.find('.avatar');
             if (!avatar.length) {
                 uiPlayer.append('<img class="avatar" />');
@@ -383,7 +388,7 @@ JP.UI = {
             !uiPlayer.find('.added_points').length && uiPlayer.append('<div class="added_points">');
             !uiPlayer.find('.score').length && uiPlayer.append('<div class="score">');
             !uiPlayer.find('.progressbar').length && uiPlayer.append('<div class="progressbar">');
-            !uiPlayer.find('.chat_bubble').length && uiPlayer.append('<div class="chat_bubble">');
+            !uiPlayer.find('.chat_bubble').length && uiPlayer.append('<div class="chat_bubble"><div class="inner"></div></div>');
             !uiPlayer.find('.ready').length && uiPlayer.append('<div class="ready">');
             !uiPlayer.find('.music_player').length && uiPlayer.append('<div class="music_player">');
             !uiPlayer.find('.rate').length && uiPlayer.append('<div class="rate">');
