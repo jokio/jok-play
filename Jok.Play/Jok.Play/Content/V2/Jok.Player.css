@@ -50,14 +50,14 @@
     vertical-align: top;
 }
 
-.jok_player .nick .nick_inner{
+.jok_player .nick .nick_inner {
     position: relative;
     display: inline-block;
     vertical-align: top;
     cursor: pointer;
 }
 
-.jok_player.active .nick .bitting{
+.jok_player.active .nick .bitting {
     display: none;
 }
 
@@ -66,11 +66,12 @@
 }
 
 .jok_player .wins {
-    color: rgba(255, 255, 255, 0.66);
+    color: rgba(255,255,255,.66);
     font-weight: bold;
     font-size: 28px;
     position: absolute;
-    top: 90px;
+    bottom: 24px;
+    left: -20px;
 }
 
 .jok_player .added_points {
@@ -245,6 +246,11 @@
 
 
 /*Invert*/
+
+.jok_player.invert .wins {
+    right: -20px;
+    left: auto;
+}
 
 .jok_player.invert .chat_bubble {
     right: 110px;

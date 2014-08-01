@@ -360,10 +360,11 @@ JP.UI = {
                 uiPlayer.addClass('jok_player');
             }
 
+            uiPlayer.show();
 
 
             !uiPlayer.find('.music_speakers').length && uiPlayer.append('<img class="music_speakers" src="//play.jok.io/images/speakers2.png" />');
-            
+
 
             var avatar = uiPlayer.find('.avatar');
             if (!avatar.length) {
@@ -402,8 +403,7 @@ JP.UI = {
         var el = $(selector);
         if (!el.length) return;
 
-        el.empty();
-        el.removeAttr('class');
+        el.hide();
         el.removeAttr('data-userid');
     },
 
@@ -502,6 +502,11 @@ JP.UI = {
                 user.removeClass('active');
             });
         }
+    },
+
+    ClearActivate: function () {
+        $('.jok_player .nick .bitting').css('right', 0);
+        $('.jok_player').removeClass('active');
     },
 
     UpdateUserListeningStatus: function (userid, isListening, channelID) {
@@ -688,6 +693,8 @@ JP.Config = {
         } else {
             $('#Jok').hasClass('panel_open') && $('#Jok').removeClass('panel_open');
         }
+
+        $('#RightPanel').css('z-index', this.RightPanelIsOpen ? 1000 : -1);
     },
 
     GetCookieDomain: function () {
