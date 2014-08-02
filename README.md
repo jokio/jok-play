@@ -10,3 +10,4 @@ Events
 * `MusicPlayerStateChanged (isPlaying, channelid)`
 * `TextsInitialized (lang)`
 * `RadioNotSupported`
+* `BeforeExit`
