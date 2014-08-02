@@ -9,3 +9,4 @@ Events
 * `ChatMessageSend (text)`
 * `MusicPlayerStateChanged (isPlaying, channelid)`
 * `TextsInitialized (lang)`
+* `RadioNotSupported`
