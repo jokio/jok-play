@@ -11,10 +11,10 @@ JP.CurrentUser = {
 
 JP.Players = {};
 
-JP.GetPlayer = function (userid, cb) {
+JP.GetPlayer = function (userid, cb, force) {
 
     var cachedPlayer = JP.Players[userid];
-    if (cachedPlayer) {
+    if (!force && cachedPlayer) {
         if (cb) cb(cachedPlayer);
         return;
     }
@@ -226,7 +226,13 @@ JP.UI = {
             $(this).hide();
             $('#ProfileModal button.friend_request_sent').show();
 
-            JP.API('/User/SendFriendRequest/' + userid);
+            JP.API('/User/SendFriendRequest/' + userid, function () {
+
+                JP.GetPlayer(userid, function (user) {
+                    JP.emit('UserRelationsUpdate');
+                }, true);
+
+            });
             JP.SendChatMessage(JP.ML.FriendRequestMessage);
         });
 
@@ -315,6 +321,8 @@ JP.UI = {
     OnChatMessageInputKeyDown: function (e) {
 
         if (e.keyCode == 13 /*Enter*/) {
+
+            if (!JP.Config.IsChatAllowed) return;
 
             var text = $('#ChatMessageInput').val();
             if (!text) return;
@@ -576,7 +584,9 @@ JP.UI = {
 
     RefreshChatMessageInput: function (isEnabled) {
 
-        if (!!isEnabled) {
+        JP.Config.IsChatAllowed = !!isEnabled
+
+        if (JP.Config.IsChatAllowed) {
             $('#ChatMessageInput').removeAttr('disabled');
             $('#ChatMessageInput').attr('placeholder', JP.ML.ChatInputPlaceholder);
         } else {
@@ -686,6 +696,8 @@ JP.Config = {
     GameID: 0,
 
     Channel: '',
+
+    IsChatAllowed: false,
 
     AudioEffectsEnabled: true,
     PlayerIsActive: false,

@@ -176,8 +176,8 @@
     color: #FFF;
     background-color: rgba(0, 0, 0, 0.9);
     z-index: 3;
-    left: 14px;
-    right: 15px;
+    left: 5px;
+    right: 5px;
     border-radius: 4px;
     opacity: .7;
     display: none;
