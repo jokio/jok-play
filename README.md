@@ -6,7 +6,7 @@ UI & UX for games
 Events
 ------
 * `Ready`
-* `ChatMessageSend (text)`
+* `SendChatMessage (text)`
 * `MusicPlayerStateChanged (isPlaying, channelid)`
 * `TextsInitialized (lang)`
 * `RadioNotSupported`
