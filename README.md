@@ -11,3 +11,4 @@ Events
 * `TextsInitialized (lang)`
 * `RadioNotSupported`
 * `BeforeExit`
+* `UserRelationsUpdate`
