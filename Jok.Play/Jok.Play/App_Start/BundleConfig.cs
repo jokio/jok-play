@@ -89,6 +89,7 @@ namespace Jok.Play
                         "~/scripts/V2/json2.js",
                         "~/scripts/V2/jquery-{version}.js",
                         "~/scripts/V2/jquery.cookie.js",
+                        "~/scripts/V2/jquery-ui.custom.js",
                         "~/scripts/V2/EventEmitter.js",
                         "~/scripts/V2/bootstrap.js",
                         "~/Scripts/V2/JP.js",

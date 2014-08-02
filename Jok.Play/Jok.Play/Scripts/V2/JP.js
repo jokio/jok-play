@@ -31,6 +31,12 @@ JP.GetPlayer = function (userid, cb) {
     });
 },
 
+JP.SendMessage = function (message) {
+
+    JP.UI.AddChatMessage(JP.CurrentUser.UserID, JP.CurrentUser.Nick, message);
+    JP.emit('ChatMessageSend', text);
+}
+
 JP.UI = {
 
     messagesAfterAds: 0,
@@ -165,9 +171,7 @@ JP.UI = {
 
             text = '(' + text + ')';
 
-            JP.UI.AddChatMessage(JP.CurrentUser.UserID, JP.CurrentUser.Nick, text);
-
-            JP.emit('ChatMessageSend', text);
+            JP.SendMessage(text);
         });
 
         $(document).on('click', '#RightPanel .chat_messages .buble a.ads', function () {
@@ -303,11 +307,9 @@ JP.UI = {
 
             var text = $('#ChatMessageInput').val();
             if (!text) return;
-
-            this.AddChatMessage(JP.CurrentUser.UserID, JP.CurrentUser.Nick, text);
             $('#ChatMessageInput').val('');
 
-            JP.emit('ChatMessageSend', text);
+            JP.SendMessage(text);
         }
     },
 

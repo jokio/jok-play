@@ -402,6 +402,7 @@
     <Content Include="Scripts\V2\JP.js" />
     <Content Include="Scripts\V2\JP.ML.js" />
     <Content Include="Scripts\V2\jquery-2.1.1.js" />
+    <Content Include="Scripts\V2\jquery-ui.custom.js" />
     <Content Include="Scripts\V2\jquery.cookie.js" />
     <Content Include="Scripts\V2\json2.js" />
     <Content Include="Scripts\V2\ZeroClipboard.js" />
