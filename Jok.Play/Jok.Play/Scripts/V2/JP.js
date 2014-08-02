@@ -106,6 +106,7 @@ JP.UI = {
 
         $(document).on('click', '#ExitButton', function () {
 
+            JP.emit('BeforeExit');
             document.location.assign(JP.Config.ExitUrl);
         });
 

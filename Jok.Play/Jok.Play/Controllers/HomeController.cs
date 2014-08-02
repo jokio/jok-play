@@ -11,7 +11,7 @@ namespace Jok.Play.Controllers
     {
         public ActionResult Index()
         {
-            var version = "0.1";
+            var version = "2.0.0";
 
             return Json(new
             {
