@@ -38,6 +38,7 @@ JP.ML = {
         RealtionStatusStranger: 'Send friend request',
         InviteFriend: 'Invite friends using this link & play with them:',
         CopyLink: 'Copy',
+        FriendRequestMessage: 'Let\'s be friends...',
     },
     ge: {
         Exit: 'გამოსვლა',
@@ -65,6 +66,7 @@ JP.ML = {
         RealtionStatusStranger: 'მეგობრობის შეთავაზება',
         InviteFriend: 'გაუზიარე მეგობრებს ეს ლინკი და ეთამაშე მათ:',
         CopyLink: 'კოპირება',
+        FriendRequestMessage: 'ვიმეგობროთ...',
     },
     ru: {
         Exit: 'Выход',
@@ -92,5 +94,6 @@ JP.ML = {
         RealtionStatusStranger: 'Отправить запрос о дружбе',
         InviteFriend: 'Пригласить друзей по этой ссылке и играть с ними:',
         CopyLink: 'Копировать',
+        FriendRequestMessage: 'Будем друзьями...',
     },
 }

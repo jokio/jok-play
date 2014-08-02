@@ -31,10 +31,10 @@ JP.GetPlayer = function (userid, cb) {
     });
 },
 
-JP.SendMessage = function (message) {
+JP.SendChatMessage = function (message) {
 
     JP.UI.AddChatMessage(JP.CurrentUser.UserID, JP.CurrentUser.Nick, message);
-    JP.emit('ChatMessageSend', message);
+    JP.emit('SendChatMessage', message);
 }
 
 JP.UI = {
@@ -98,7 +98,7 @@ JP.UI = {
         jok.append('<div id="SettingsModal" class="modal " tabindex="-1" role="dialog" aria-labelledby="SettingsModal" aria-hidden="true"> <div class="modal-dialog"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">' + JP.ML.CloseSettings + '</span></button> <h3 class="modal-title" id="SettingsModal"><i class="fa fa-umbrella"></i> ' + JP.ML.GameSettings + '</h3> </div> <div class="modal-body"> <button class="btn btn-default btn-block btn-lg disable_audio_effects"><i class="glyphicon glyphicon-volume-up" style="float:left;"></i> ' + JP.ML.DisableAudioEffects + '</button> <button class="btn btn-default btn-block btn-lg enable_audio_effects"><i class="glyphicon glyphicon-volume-off" style="float:left;"></i> ' + JP.ML.EnableAudioEffects + '</button> <button class="btn btn-default btn-block btn-lg clear_chat"><i class="fa fa-comment-o" style="float:left;"></i> ' + JP.ML.ClearChat + '</button> </div> </div> </div> </div>');
         jok.append('<div id="RightPanel"> <div class="chat_messages"> <div class="bubles_container"> </div> </div> <div class="chat_input"> <input id="ChatMessageInput" type="text" placeholder="' + JP.ML.ChatInputPlaceholder + '" disabled maxlength="100" /> </div> </div>');
         jok.append('<div id="SmilesBoxModal" class="modal " tabindex="-1" role="dialog" aria-labelledby="SmilesBoxModal" aria-hidden="true"> <div class="modal-dialog"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">' + JP.ML.CloseEmotions + '</span></button> <h3 class="modal-title"><i class="fa fa-smile-o"></i> ' + JP.ML.SendEmotions + '</h3> </div> <div class="modal-body"> <div class="smiles_container"> </div> <div class="headline vip"> <span>' + JP.ML.VIPEmotions + '</span> </div> <div class="vip_smiles_container disabled"> </div> </div> </div> </div> </div>');
-        jok.append('<div id="ProfileModal" class="modal " tabindex="-1" role="dialog" aria-labelledby="ProfileModal" aria-hidden="true"> <div class="modal-dialog"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">' + JP.ML.CloseProfile + '</span></button> <h3 class="modal-title"><span class="nick">Nick Here</span></h3> </div> <div class="modal-body"> <img src="" class="avatar" /> <div class="cups"> <div class="golden"> <span>0</span> <i class="fa fa-trophy"></i> </div> <div class="silver"> <span>10</span> <i class="fa fa-trophy"></i> </div> <div class="bronze"> <span>0</span> <i class="fa fa-trophy"></i> </div> </div> <div class="level_name"></div> </div> <div class="modal-footer"> <div class="btn-group" style="float:left;"> <button class="btn btn-danger dropdown-toggle report" data-toggle="dropdown" style="min-width: 119px;">Report <span class="caret"></span></button> <ul class="dropdown-menu" role="menu"> <li><a href="#" class="report_option" data-reason="1">Cheating</a></li> <li><a href="#" class="report_option" data-reason="1">Bad words in chat</a></li> <li class="divider"></li> <li><a href="#" class="report_option" data-reason="1">Just don\'t like</a></li> </ul> </div> <button class="btn btn-default yourself" disabled>' + JP.ML.RealtionStatusYou + '</button> <button class="btn btn-default your_friend" disabled>' + JP.ML.RealtionStatusFriend + '</button> <button class="btn btn-default friend_request_sent" disabled>' + JP.ML.RealtionStatusFriendRequestSent + '</button> <button class="btn btn-success invite_friend">' + JP.ML.RealtionStatusStranger + '</button> </div> </div> </div> </div>');
+        jok.append('<div id="ProfileModal" class="modal " tabindex="-1" role="dialog" aria-labelledby="ProfileModal" aria-hidden="true"> <div class="modal-dialog"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">' + JP.ML.CloseProfile + '</span></button> <h3 class="modal-title"><span class="nick">Nick Here</span></h3> </div> <div class="modal-body"> <img src="" class="avatar" /> <div class="cups"> <div class="golden"> <span>0</span> <i class="fa fa-trophy"></i> </div> <div class="silver"> <span>10</span> <i class="fa fa-trophy"></i> </div> <div class="bronze"> <span>0</span> <i class="fa fa-trophy"></i> </div> </div> <div class="level_name"></div> </div> <div class="modal-footer"> <div class="btn-group" style="float:left;"> <button class="btn btn-danger dropdown-toggle report" data-toggle="dropdown" style="min-width: 119px;">Report <span class="caret"></span></button> <ul class="dropdown-menu" role="menu"> <li><a href="#" class="report_option" data-reason="1">Cheating</a></li> <li><a href="#" class="report_option" data-reason="1">Bad words in chat</a></li> <li class="divider"></li> <li><a href="#" class="report_option" data-reason="1">Just don\'t like</a></li> </ul> </div> <button class="btn btn-default yourself" disabled>' + JP.ML.RealtionStatusYou + '</button> <button class="btn btn-default your_friend" disabled>' + JP.ML.RealtionStatusFriend + '</button> <button class="btn btn-default friend_request_sent" disabled>' + JP.ML.RealtionStatusFriendRequestSent + '</button> <button class="btn btn-success send_friend_request">' + JP.ML.RealtionStatusStranger + '</button> </div> </div> </div> </div>');
 
         $('body').prepend(jok);
     },
@@ -171,7 +171,7 @@ JP.UI = {
 
             text = '(' + text + ')';
 
-            JP.SendMessage(text);
+            JP.SendChatMessage(text);
         });
 
         $(document).on('click', '#RightPanel .chat_messages .buble a.ads', function () {
@@ -218,7 +218,7 @@ JP.UI = {
             JP.UI.PlayerProfile(userid);
         });
 
-        $(document).on('click', '#ProfileModal button.invite_friend', function () {
+        $(document).on('click', '#ProfileModal button.send_friend_request', function () {
 
             var userid = $('#ProfileModal').data('userid');
             if (!userid) return;
@@ -227,6 +227,7 @@ JP.UI = {
             $('#ProfileModal button.friend_request_sent').show();
 
             JP.API('/User/SendFriendRequest/' + userid);
+            JP.SendChatMessage(JP.ML.FriendRequestMessage);
         });
 
         $(document).on('click', '#Notification .item.invite_friend input', function () {
@@ -249,7 +250,17 @@ JP.UI = {
             swfPath: JP.Config.JPUrl + 'Scripts/V2/ZeroClipboard.swf'
         });
 
+
+        $('#Notification .item.invite_friend button.btn').parent().hide();
+        $('#Notification .item.invite_friend button.btn').parent().parent().attr('class', '');
+
         var client = new ZeroClipboard($('#Notification .item.invite_friend button.btn')[0]);
+
+        client.on('ready', function () {
+            $('#Notification .item.invite_friend button.btn').parent().show();
+            $('#Notification .item.invite_friend button.btn').parent().parent().attr('class', 'input-group');
+        });
+
         client.on('aftercopy', function () {
             $('#Notification .item.invite_friend button.btn').html('<i class="fa fa-check"></i>');
 
@@ -309,7 +320,7 @@ JP.UI = {
             if (!text) return;
             $('#ChatMessageInput').val('');
 
-            JP.SendMessage(text);
+            JP.SendChatMessage(text);
         }
     },
 
@@ -478,7 +489,7 @@ JP.UI = {
 
                     case 1 /*New*/:
                     default:
-                        $('#ProfileModal button.invite_friend').show();
+                        $('#ProfileModal button.send_friend_request').show();
                         break;
                 }
             }
@@ -561,6 +572,17 @@ JP.UI = {
 
     HideNotification: function () {
         $('#Notification .item').hide();
+    },
+
+    RefreshChatMessageInput: function (isEnabled) {
+
+        if (!!isEnabled) {
+            $('#ChatMessageInput').removeAttr('disabled');
+            $('#ChatMessageInput').attr('placeholder', JP.ML.ChatInputPlaceholder);
+        } else {
+            $('#ChatMessageInput').attr('disabled', 'disabled');
+            $('#ChatMessageInput').attr('placeholder', JP.ML.ChatInputPlaceholderDisabled);
+        }
     },
 
 
