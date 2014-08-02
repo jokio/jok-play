@@ -86,6 +86,7 @@ namespace Jok.Play
 
             // V2
             bundles.Add(new ScriptBundle("~/js/v2").Include(
+                        "~/scripts/V2/json2.js",
                         "~/scripts/V2/jquery-{version}.js",
                         "~/scripts/V2/jquery.cookie.js",
                         "~/scripts/V2/EventEmitter.js",
