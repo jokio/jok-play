@@ -34,7 +34,7 @@ JP.GetPlayer = function (userid, cb) {
 JP.SendMessage = function (message) {
 
     JP.UI.AddChatMessage(JP.CurrentUser.UserID, JP.CurrentUser.Nick, message);
-    JP.emit('ChatMessageSend', text);
+    JP.emit('ChatMessageSend', message);
 }
 
 JP.UI = {
