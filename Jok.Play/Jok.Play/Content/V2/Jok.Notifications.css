@@ -1,4 +1,4 @@
-﻿#Notifications {
+﻿#Notification {
     top: 50%;
     position: absolute;
     width: 300px;
@@ -9,7 +9,7 @@
     cursor: default;
 }
 
-#Notifications .item {
+#Notification .item {
     border: 1px solid rgba(255, 255, 255, 0.54902);
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -23,30 +23,30 @@
     display: none;
 }
 
-#Notifications .added_points {
+#Notification .added_points {
     color: orange;
 }
 
-#Notifications .added_ratings {
+#Notification .added_ratings {
     color: #11D111;
     font-family: Tahoma;
 }
 
-#Notifications .added_ratings.fail {
+#Notification .added_ratings.fail {
     color: #EE9E9E;
 }
 
-#Notifications .item.invite_friend{
+#Notification .item.invite_friend{
 
 }
 
-#Notifications .item.invite_friend input{
+#Notification .item.invite_friend input{
     text-align: center;
     color: gray;
 }
 
 /*@media screen and (min-width:1250px) {
-    #Notifications {
+    #Notification {
         margin-left: -300px;
     }
 }*/

@@ -141,6 +141,14 @@
 }
 
 .jok_player .ready {
+    font-size: 40px;
+    color: white;
+    position: absolute;
+    top: 60px;
+    z-index: 10;
+    right: 0px;
+    text-shadow: 0 0 5px yellow;
+    display: none;
 }
 
 .jok_player .music_speakers {
@@ -261,4 +269,10 @@
     right: -20px;
     left: auto;
     border-width: 15px 0 0px 20px;
+}
+
+
+/*Ready*/
+.jok_player.ready .ready {
+    display: block;
 }

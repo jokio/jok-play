@@ -216,6 +216,10 @@ JP.FM = {
 
                     console.log((new Date().toJSON()) + ' trying to play, again.');
                 }, false);
+            },
+            // fires when a problem is detected
+            error: function (a, b, c) {
+                JP.emit('RadioNotSupported');
             }
         });
 

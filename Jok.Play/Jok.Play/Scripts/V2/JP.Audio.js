@@ -111,6 +111,8 @@ JP.Audio = {
 
     Play: function (name) {
 
+        if (name != 'Warning' && !JP.Config.AudioEffectsEnabled) return;
+
         var sources = this.Effects[name];
         if (!sources) return;
 
