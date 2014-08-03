@@ -48,7 +48,7 @@ JP.UI = {
 
         FastClick.attach(document.body);
 
-        var sid = JP.Config.GetQueryVariable('sid');
+        var sid = JP.Config.GetQueryVariable('sid', 36);
         if (sid)
             $.cookie('sid', sid, { expire: 1200 });
 
@@ -86,6 +86,8 @@ JP.UI = {
 
     InitDom: function () {
 
+        var loginHref = location.href.replace(new RegExp('sid=', 'g'), 'sid_old=');
+
         var jok = $('<div id="Jok">');
         jok.append('<div id="Background"></div>');
         jok.append('<div id="Background2"></div>');
@@ -93,7 +95,7 @@ JP.UI = {
         jok.append('<div id="ChatButton"> ' + JP.ML.Chat + ' <div class="circle"> <i class="fa fa-comment-o"></i> </div> </div>');
         jok.append('<div id="ConfigButton" data-toggle="modal" data-target="#SettingsModal"> ' + JP.ML.GameSettings + ' <div class="circle"> <i class="fa fa-umbrella"></i> </div> </div>');
         jok.append('<div id="PlayerButton"> <div class="circle player_circle"> <i class="glyphicon glyphicon-music main_icon"></i> </div> <span class="title"> ' + JP.ML.MusicPlayer + ' </span> <div id="MusicPlayer" class="jokfm_plugin"> <div> <span class="item previous_button"><i class="fa fa-backward"></i></span> <span class="item play_button"><i class="fa fa-play"></i></span> <span class="item stop_button"><i class="fa fa-stop"></i></span> <span class="item next_button"><i class="fa fa-forward"></i></span> </div> <div class="active_channel"></div> </div> </div>');
-        jok.append('<div id="Authorization"> <img src="http://jok.io/content/images/portal/joklogo2.png" /> <br /> <br /> <ul class="social_connect"> <li class="click_navigate"> <a href="http://jok.io/portal/joinus/facebook?returnUrl=' + location.href + '"> <img src="http://jok.io/content/images/social/fb.png" /> ' + JP.ML.LoginWithFacebook + ' </a> </li> <li class="click_navigate"> <a href="http://jok.io/portal/joinus/twitter?returnUrl=' + location.href + '"> <img src="http://jok.io/content/images/social/twitter.png" /> ' + JP.ML.LoginWithTwitter + ' </a> </li> <li class="click_navigate"> <a href="http://jok.io/portal/joinus/odnoklasniki?returnUrl=' + location.href + '"> <img src="http://jok.io/content/images/social/odno.png" /> ' + JP.ML.LoginWithOdno + ' </a> </li> <li class="click_navigate"> <a href="http://jok.io/portal/joinus/vkontaqte?returnUrl=' + location.href + '"> <img src="http://jok.io/content/images/social/vk.png" /> ' + JP.ML.LoginWithVK + ' </a> </li> <li class="click_navigate"> <a href="http://jok.io/portal/joinus/google?returnUrl=' + location.href + '"> <img src="http://jok.io/content/images/social/google.png" /> ' + JP.ML.LoginWithGoogle + ' </a> </li> </ul> </div>');
+        jok.append('<div id="Authorization"> <img src="http://jok.io/content/images/portal/joklogo2.png" /> <br /> <br /> <ul class="social_connect"> <li class="click_navigate"> <a href="http://jok.io/portal/joinus/facebook?returnUrl=' + loginHref + '"> <img src="http://jok.io/content/images/social/fb.png" /> ' + JP.ML.LoginWithFacebook + ' </a> </li> <li class="click_navigate"> <a href="http://jok.io/portal/joinus/twitter?returnUrl=' + loginHref + '"> <img src="http://jok.io/content/images/social/twitter.png" /> ' + JP.ML.LoginWithTwitter + ' </a> </li> <li class="click_navigate"> <a href="http://jok.io/portal/joinus/odnoklasniki?returnUrl=' + loginHref + '"> <img src="http://jok.io/content/images/social/odno.png" /> ' + JP.ML.LoginWithOdno + ' </a> </li> <li class="click_navigate"> <a href="http://jok.io/portal/joinus/vkontaqte?returnUrl=' + loginHref + '"> <img src="http://jok.io/content/images/social/vk.png" /> ' + JP.ML.LoginWithVK + ' </a> </li> <li class="click_navigate"> <a href="http://jok.io/portal/joinus/google?returnUrl=' + loginHref + '"> <img src="http://jok.io/content/images/social/google.png" /> ' + JP.ML.LoginWithGoogle + ' </a> </li> </ul> </div>');
         jok.append('<div id="Notification"> <div class="item message"></div> <div class="item invite_friend">' + JP.ML.InviteFriend + '<br /><br /><div class="input-group"><input type="text" class="form-control" id="InviteFriendLinkInput" value="' + JP.Config.PlayUrl + '"><div class="input-group-btn"><button type="button" class="btn btn-default" data-clipboard-target="InviteFriendLinkInput">' + JP.ML.CopyLink + '</button></div></div></div> </div>');
         jok.append('<div id="SettingsModal" class="modal " tabindex="-1" role="dialog" aria-labelledby="SettingsModal" aria-hidden="true"> <div class="modal-dialog"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">' + JP.ML.CloseSettings + '</span></button> <h3 class="modal-title" id="SettingsModal"><i class="fa fa-umbrella"></i> ' + JP.ML.GameSettings + '</h3> </div> <div class="modal-body"> <button class="btn btn-default btn-block btn-lg disable_audio_effects"><i class="glyphicon glyphicon-volume-up" style="float:left;"></i> ' + JP.ML.DisableAudioEffects + '</button> <button class="btn btn-default btn-block btn-lg enable_audio_effects"><i class="glyphicon glyphicon-volume-off" style="float:left;"></i> ' + JP.ML.EnableAudioEffects + '</button> <button class="btn btn-default btn-block btn-lg clear_chat"><i class="fa fa-comment-o" style="float:left;"></i> ' + JP.ML.ClearChat + '</button> </div> </div> </div> </div>');
         jok.append('<div id="RightPanel"> <div class="chat_messages"> <div class="bubles_container"> </div> </div> <div class="chat_input"> <input id="ChatMessageInput" type="text" placeholder="' + JP.ML.ChatInputPlaceholder + '" disabled maxlength="100" /> </div> </div>');
@@ -441,6 +443,10 @@ JP.UI = {
             !uiPlayer.find('.rate').length && uiPlayer.append('<div class="rate">');
             !uiPlayer.find('.playing_music_channel').length && uiPlayer.append('<div class="playing_music_channel">');
 
+            if (JP.Config.PlayerIsActive && JP.CurrentUser.UserID == userid) {
+                uiPlayer.find('.music_player').show();
+            }
+
             cb && cb();
         });
     },
@@ -695,6 +701,8 @@ JP.Config = {
 
     GameID: 0,
 
+    GameMode: 0,
+
     Channel: '',
 
     IsChatAllowed: false,
@@ -754,7 +762,7 @@ JP.Config = {
         return (firstIndex != lastIndex) ? host.substring(firstIndex) : (lastIndex > -1 ? '.' + host : '');
     },
 
-    GetQueryVariable: function (variable) {
+    GetQueryVariable: function (variable, length) {
         if (!variable) return;
 
         var query = window.location.search.substring(1);
@@ -764,7 +772,9 @@ JP.Config = {
             var key = decodeURIComponent(pair[0]);
             var value = decodeURIComponent(pair[1]);
 
-            if (key && value.length == 36 && key.toLowerCase() == variable.toLowerCase()) {
+            if (length && value.length != length) continue;
+
+            if (key && key.toLowerCase() == variable.toLowerCase()) {
                 return value;
             }
         }
@@ -792,11 +802,19 @@ JP.API = function (action, cb) {
 }
 
 
-JP.Init = function (gameid, channel, serverUrl) {
+JP.Init = function (opts){ //gameid, channel, serverUrl, exitUrl) {
 
-    JP.Config.GameID = gameid;
-    JP.Config.Channel = channel;
-    JP.Config.ServerUrl = serverUrl;
+    JP.Config.GameID = opts.GameID;
+    JP.Config.Channel = opts.Channel;
+    JP.Config.ServerUrl = opts.ServerUrl;
+    JP.Config.ServerUrl = opts.ServerUrl;
+
+    if (opts.ExitUrl)
+        JP.Config.ExitUrl = opts.ExitUrl;
+
+    if (opts.GameMode)
+        JP.Config.GameMode = opts.GameMode;
+
 
     JP.UI.Init();
 }
