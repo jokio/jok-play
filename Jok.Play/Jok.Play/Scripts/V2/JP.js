@@ -153,6 +153,8 @@ JP.UI = {
             $.radio.play();
 
             $('#PlayerButton').addClass('opened');
+
+            JP.UI._BroadcastListeningMusic();
         });
 
         $(document).on('contextmenu', '#ProfileModal,#SettingsModal', function () {
@@ -685,6 +687,31 @@ JP.UI = {
         }, 100);
     },
 
+    _LauchFullScreen: function (element) {
+
+        if (!element)
+            element = document.documentElement;
+
+        if (element.requestFullscreen) {
+            element.requestFullscreen();
+        } else if (element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) {
+            element.webkitRequestFullscreen();
+        } else if (element.msRequestFullscreen) {
+            element.msRequestFullscreen();
+        }
+    },
+
+    _ExitFullScreen: function () {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        }
+    },
 }
 
 

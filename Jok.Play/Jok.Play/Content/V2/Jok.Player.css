@@ -80,7 +80,16 @@
 
 
 .jok_player .score {
+    position: absolute;
+    left: 110px;
+    top: 78px;
+    font-weight: bold;
+    font-size: 20px;
+    color: #DC974C;
+    width: 120px;
+    text-align: left;
 }
+
 
 .jok_player .progressbar {
 }
@@ -271,6 +280,12 @@
     right: -20px;
     left: auto;
     border-width: 15px 0 0px 20px;
+}
+
+.jok_player.invert .score {
+    left: auto;
+    right: 110px;
+    text-align: right;
 }
 
 
