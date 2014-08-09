@@ -33,8 +33,9 @@ JP.GetPlayer = function (userid, cb, force) {
 
 JP.SendChatMessage = function (message) {
 
-    JP.UI.AddChatMessage(JP.CurrentUser.UserID, JP.CurrentUser.Nick, message);
-    JP.emit('SendChatMessage', message);
+    var isSuccess = JP.UI.AddChatMessage(JP.CurrentUser.UserID, JP.CurrentUser.Nick, message);
+    if (isSuccess)
+        JP.emit('SendChatMessage', message);
 }
 
 JP.UI = {
@@ -387,6 +388,7 @@ JP.UI = {
         this._ShowPlayerBubble(userid, msg);
         this._AddChatLog(userid == JP.CurrentUser.UserID ? 3 : 1, userid, nick, msg, false);
 
+        return true;
     },
 
     SetPlayer: function (selector, userid, cb) {
@@ -802,7 +804,7 @@ JP.API = function (action, cb) {
 }
 
 
-JP.Init = function (opts){ //gameid, channel, serverUrl, exitUrl) {
+JP.Init = function (opts) { //gameid, channel, serverUrl, exitUrl) {
 
     JP.Config.GameID = opts.GameID;
     JP.Config.Channel = opts.Channel;
