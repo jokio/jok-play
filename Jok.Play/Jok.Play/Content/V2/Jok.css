@@ -379,3 +379,53 @@
     font-size: 25px;
     color: gray;
 }
+
+
+
+#AdsModal .modal-dialog {
+    width: 340px;
+    text-align: center;
+    top: 50%;
+    position: absolute;
+    left: 50%;
+    margin-top: -180px;
+    margin-left: -170px;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#AdsModal .modal-content {
+    padding: 10px;
+}
+
+#AdsModal .modal-body {
+    background: white;
+}
+
+#AdsModal .ads_close {
+    margin-bottom: 25px;
+    margin-top: -14px;
+    margin-right: -10px;
+}
+
+#AdsModal .ads_image {
+    width: 275px;
+    min-height: 155px;
+    cursor: pointer;
+}
+
+#AdsModal .ads_title {
+    text-align: center;
+    margin-top: 20px;
+    cursor: pointer;
+    color: #428bca;
+}
+
+#AdsModal .ads_image:hover ~ .ads_title,
+#AdsModal .ads_title:hover {
+    text-decoration: underline;
+    color: #2a6496;
+}

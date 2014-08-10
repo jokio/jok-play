@@ -38,6 +38,7 @@ JP.SendChatMessage = function (message) {
         JP.emit('SendChatMessage', message);
 }
 
+
 JP.UI = {
 
     messagesAfterAds: 0,
@@ -102,6 +103,7 @@ JP.UI = {
         jok.append('<div id="RightPanel"> <div class="chat_messages"> <div class="bubles_container"> </div> </div> <div class="chat_input"> <input id="ChatMessageInput" type="text" placeholder="' + JP.ML.ChatInputPlaceholder + '" disabled maxlength="100" /> </div> </div>');
         jok.append('<div id="SmilesBoxModal" class="modal " tabindex="-1" role="dialog" aria-labelledby="SmilesBoxModal" aria-hidden="true"> <div class="modal-dialog"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">' + JP.ML.CloseEmotions + '</span></button> <h3 class="modal-title"><i class="fa fa-smile-o"></i> ' + JP.ML.SendEmotions + '</h3> </div> <div class="modal-body"> <div class="smiles_container"> </div> <div class="headline vip"> <span>' + JP.ML.VIPEmotions + '</span> </div> <div class="vip_smiles_container disabled"> </div> </div> </div> </div> </div>');
         jok.append('<div id="ProfileModal" class="modal " tabindex="-1" role="dialog" aria-labelledby="ProfileModal" aria-hidden="true"> <div class="modal-dialog"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">' + JP.ML.CloseProfile + '</span></button> <h3 class="modal-title"><span class="nick">Nick Here</span></h3> </div> <div class="modal-body"> <img src="" class="avatar" /> <div class="cups"> <div class="golden"> <span>0</span> <i class="fa fa-trophy"></i> </div> <div class="silver"> <span>10</span> <i class="fa fa-trophy"></i> </div> <div class="bronze"> <span>0</span> <i class="fa fa-trophy"></i> </div> </div> <div class="level_name"></div> </div> <div class="modal-footer"> <div class="btn-group" style="float:left;"> <button class="btn btn-danger dropdown-toggle report" data-toggle="dropdown" style="min-width: 119px;">Report <span class="caret"></span></button> <ul class="dropdown-menu" role="menu"> <li><a href="#" class="report_option" data-reason="1">Cheating</a></li> <li><a href="#" class="report_option" data-reason="1">Bad words in chat</a></li> <li class="divider"></li> <li><a href="#" class="report_option" data-reason="1">Just don\'t like</a></li> </ul> </div> <button class="btn btn-default yourself" disabled>' + JP.ML.RealtionStatusYou + '</button> <button class="btn btn-default your_friend" disabled>' + JP.ML.RealtionStatusFriend + '</button> <button class="btn btn-default friend_request_sent" disabled>' + JP.ML.RealtionStatusFriendRequestSent + '</button> <button class="btn btn-success send_friend_request">' + JP.ML.RealtionStatusStranger + '</button> </div> </div> </div> </div>');
+        jok.append('<div id="AdsModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="AdsModal" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-body"><div class="ads_close"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button></div><img src="" class="ads_image" /><div class="ads_title"></div></div></div></div></div>');
 
         $('body').prepend(jok);
     },
@@ -157,7 +159,7 @@ JP.UI = {
             JP.UI._BroadcastListeningMusic();
         });
 
-        $(document).on('contextmenu', '#ProfileModal,#SettingsModal', function () {
+        $(document).on('contextmenu', '#ProfileModal,#SettingsModal,#AdsModal', function () {
             return false;
         });
 
@@ -248,6 +250,15 @@ JP.UI = {
         $(document).on('keydown', '#Notification .item.invite_friend input', function () {
             return false;
         });
+
+        $(document).on('click', '#AdsModal .ads_title,#AdsModal .ads_image', function () {
+            var link = $(this).data('link');
+            if (link)
+                window.open(link);
+
+            $('#AdsModal').modal('hide');
+        });
+
 
 
         $(document).on('keydown', '#ChatMessageInput', this.OnChatMessageInputKeyDown.bind(this));
@@ -603,6 +614,27 @@ JP.UI = {
             $('#ChatMessageInput').attr('disabled', 'disabled');
             $('#ChatMessageInput').attr('placeholder', JP.ML.ChatInputPlaceholderDisabled);
         }
+    },
+
+    ShowAds: function (force) {
+
+        if (JP.CurrentUser.IsVIP && !force) return;
+
+        JP.API('/ads/getnext', (function (data) {
+            if (!data || !data.IsSuccess) return;
+
+
+            $('#AdsModal .ads_image,#AdsModal .ads_title').attr('data-link', data.Link);
+
+            $('#AdsModal .ads_image').attr('src', data.ImageUrl);
+            $('#AdsModal .ads_title').html(data.Description);
+
+            $('#AdsModal').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+
+        }).bind(this));
     },
 
 
