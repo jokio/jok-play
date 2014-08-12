@@ -429,3 +429,8 @@
     text-decoration: underline;
     color: #2a6496;
 }
+
+
+.me-cannotplay {
+    display: none;
+}
