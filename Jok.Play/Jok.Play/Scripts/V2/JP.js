@@ -773,7 +773,7 @@ JP.Config = {
     RightPanelIsOpen: false,
 
     Init: function () {
-        this.AudioEffectsEnabled = localStorage['JP_AudioEffectsEnabled'] == 1;
+        this.AudioEffectsEnabled = localStorage['JP_AudioEffectsEnabled'] != 0;
         this.RightPanelIsOpen = localStorage['JP_RightPanelIsOpen'] == 1;
 
         var exitUrl = this.GetQueryVariable('ExitUrl');
