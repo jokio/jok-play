@@ -105,6 +105,17 @@ JP.Audio = {
             if (!obj.Sources[i].Type || !obj.Sources[i].Src) return;
         }
 
+        if (this.Effects[obj.Name]) {
+            for (var i = 0; i < obj.Sources.length; i++) {
+
+                var newSource = obj.Sources[i];
+
+                this.Effects[obj.Name].push(newSource);
+            }
+
+            return;
+        }
+
         this.Effects[obj.Name] = obj.Sources;
     },
 

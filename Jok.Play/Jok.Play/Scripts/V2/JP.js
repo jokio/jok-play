@@ -163,7 +163,11 @@ JP.UI = {
             return false;
         });
 
-        $(document).on('contextmenu', function () {
+        $(document).on('contextmenu', function (e) {
+
+            if (e && e.target && e.target.tagName == "INPUT" && e.target.type == "text") {
+                return true;
+            }
 
             if (JP.CurrentUser.UserID)
                 $('#SmilesBoxModal').modal();
