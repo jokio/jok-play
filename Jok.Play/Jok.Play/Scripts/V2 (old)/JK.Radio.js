@@ -1,4 +1,4 @@
-﻿var JK;
+var JK;
 (function (JK) {
     var Radio = (function () {
         function Radio() {
